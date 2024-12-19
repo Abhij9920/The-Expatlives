@@ -1,0 +1,235 @@
+<!-- components/pathway.html -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<div class="loading-spinner hidden">
+    <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-wisteria-dark"></div>
+</div>
+
+
+
+
+<div id="learning-path" class="py-8 md:py-20 bg-gradient-to-b from-white to-wisteria-light">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl lg:text-5xl font-bold text-center mb-8 md:mb-16">
+            Your Path to <span class="text-wisteria-dark">Japanese Fluency</span>
+        </h2>
+
+        <!-- Interactive Timeline -->
+        <div class="max-w-6xl mx-auto relative">
+            <!-- Progress Line (hidden on mobile) -->
+            <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-wisteria-light">
+                <div class="h-1/3 bg-wisteria-dark transition-all duration-1000" id="progress-line"></div>
+            </div>
+
+            <!-- Timeline Steps -->
+            <div class="space-y-12 md:space-y-24 relative">
+                <!-- Beginner Level -->
+                <div class="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-8 items-center group">
+                    <div class="md:text-right md:pr-12 transition-all duration-700 md:group-hover:opacity-100">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">Beginner Level</h3>
+                        <div class="space-y-4">
+                            <div class="hover-card bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                                <h4 class="font-bold text-sakura-dark mb-2">Hiragana & Katakana</h4>
+                                <p class="text-gray-600">Master basic Japanese writing systems</p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-sakura-light text-sakura-dark rounded-full text-sm">2-4 weeks</span>
+                                    <span class="px-3 py-1 bg-sakura-light text-sakura-dark rounded-full text-sm">Interactive</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <!-- Timeline Marker (hidden on mobile) -->
+                        <div class="hidden md:block absolute left-0 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-wisteria rounded-full border-4 border-white shadow-lg"></div>
+                        <!-- Content -->
+                        <div class="md:pl-12 transition-all duration-700 md:group-hover:opacity-100">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="hover-card bg-white p-4 rounded-xl shadow-lg">
+                                    <div class="text-3xl md:text-4xl font-bold text-sakura mb-2">46</div>
+                                    <p class="text-sm md:text-base text-gray-600">Hiragana Characters</p>
+                                </div>
+                                <div class="hover-card bg-white p-4 rounded-xl shadow-lg">
+                                    <div class="text-3xl md:text-4xl font-bold text-sakura mb-2">46</div>
+                                    <p class="text-sm md:text-base text-gray-600">Katakana Characters</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intermediate Level -->
+                <div class="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-8 items-center group">
+                    <div class="md:text-right md:pr-12 transition-all duration-700 md:group-hover:opacity-100">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">Intermediate Level</h3>
+                        <div class="space-y-4">
+                            <div class="hover-card bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                                <h4 class="font-bold text-wisteria-dark mb-2">Basic Kanji & Grammar</h4>
+                                <p class="text-gray-600">Essential communication patterns</p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-wisteria-light text-wisteria-dark rounded-full text-sm">3-6 months</span>
+                                    <span class="px-3 py-1 bg-wisteria-light text-wisteria-dark rounded-full text-sm">N4-N3 Level</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="hidden md:block absolute left-0 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-wisteria rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="md:pl-12 transition-all duration-700 md:group-hover:opacity-100">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="hover-card bg-white p-4 rounded-xl shadow-lg">
+                                    <div class="text-3xl md:text-4xl font-bold text-wisteria mb-2">300+</div>
+                                    <p class="text-sm md:text-base text-gray-600">Basic Kanji</p>
+                                </div>
+                                <div class="hover-card bg-white p-4 rounded-xl shadow-lg">
+                                    <div class="text-3xl md:text-4xl font-bold text-wisteria mb-2">1500+</div>
+                                    <p class="text-sm md:text-base text-gray-600">Vocabulary Words</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Level -->
+                <div class="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-8 items-center group">
+                    <div class="md:text-right md:pr-12 transition-all duration-700 md:group-hover:opacity-100">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">Advanced Level</h3>
+                        <div class="space-y-4">
+                            <div class="hover-card bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                                <h4 class="font-bold text-bamboo-dark mb-2">Fluent Communication</h4>
+                                <p class="text-gray-600">Business-level Japanese proficiency</p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-bamboo-light text-bamboo-dark rounded-full text-sm">1-2 years</span>
+                                    <span class="px-3 py-1 bg-bamboo-light text-bamboo-dark rounded-full text-sm">N2-N1 Level</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="hidden md:block absolute left-0 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-wisteria rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="md:pl-12 transition-all duration-700 md:group-hover:opacity-100">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="hover-card bg-white p-4 rounded-xl shadow-lg">
+                                    <div class="text-3xl md:text-4xl font-bold text-bamboo mb-2">2000+</div>
+                                    <p class="text-sm md:text-base text-gray-600">Kanji Characters</p>
+                                </div>
+                                <div class="hover-card bg-white p-4 rounded-xl shadow-lg">
+                                    <div class="text-3xl md:text-4xl font-bold text-bamboo mb-2">10000+</div>
+                                    <p class="text-sm md:text-base text-gray-600">Vocabulary Range</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    (function() {
+        // Show loading spinner
+        const loadingSpinner = document.querySelector('.loading-spinner');
+        const learningPath = document.getElementById('learning-path');
+        
+        if (loadingSpinner && learningPath) {
+            loadingSpinner.classList.remove('hidden');
+            
+            // Simulate loading (you can remove setTimeout if loading actual data)
+            setTimeout(() => {
+                loadingSpinner.classList.add('hidden');
+                learningPath.style.opacity = '1';
+                initializePathwayComponent();
+            }, 500);
+        }
+    
+        function initializePathwayComponent() {
+            // Add intersection observer for animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        // Add class to trigger animations
+                        const leftContent = entry.target.querySelector('[class*="md:text-right"]');
+                        const rightContent = entry.target.querySelector('[class*="md:pl-12"]');
+                        
+                        if (leftContent) {
+                            leftContent.classList.add('opacity-100', 'translate-x-0');
+                        }
+                        if (rightContent) {
+                            rightContent.classList.add('opacity-100', 'translate-x-0');
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+    
+            // Observe all timeline groups
+            document.querySelectorAll('.group').forEach(group => {
+                observer.observe(group);
+            });
+    
+            // Update progress line on scroll
+            function updateProgressLine() {
+                const progressLine = document.getElementById('progress-line');
+                if (!progressLine) return;
+    
+                const timeline = document.querySelector('.space-y-12');
+                const scrollPosition = window.scrollY;
+                const timelineTop = timeline.offsetTop;
+                const timelineHeight = timeline.offsetHeight;
+                const windowHeight = window.innerHeight;
+    
+                let progress = (scrollPosition - timelineTop + windowHeight/2) / timelineHeight;
+                progress = Math.max(0, Math.min(1, progress));
+    
+                progressLine.style.height = `${progress * 100}%`;
+            }
+    
+            // Add scroll listener for progress line
+            window.addEventListener('scroll', updateProgressLine);
+            // Initial update
+            updateProgressLine();
+    
+            // Add hover effects for cards
+            const cards = document.querySelectorAll('.hover-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('scale-105');
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('scale-105');
+                });
+            });
+        }
+    })();
+    </script>
+    
+    <style>
+    /* Custom styles for the loading spinner */
+    .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 50;
+    }
+    
+    /* Custom colors if not provided by Tailwind */
+    :root {
+        --wisteria-dark: #6B46C1;
+        --wisteria-light: #E9D8FD;
+        --sakura-dark: #D53F8C;
+        --sakura-light: #FED7E2;
+        --bamboo-dark: #2F855A;
+        --bamboo-light: #C6F6D5;
+    }
+    
+    .text-wisteria-dark { color: var(--wisteria-dark); }
+    .text-sakura-dark { color: var(--sakura-dark); }
+    .text-bamboo-dark { color: var(--bamboo-dark); }
+    .bg-wisteria-light { background-color: var(--wisteria-light); }
+    .bg-sakura-light { background-color: var(--sakura-light); }
+    .bg-bamboo-light { background-color: var(--bamboo-light); }
+    </style>
