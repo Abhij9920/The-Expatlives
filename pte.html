@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering English Language Proficiency</title>
+    <link href="css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <script src="https://kit.fontawesome.com/bf07ff0e11.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            padding-top: 70px;
+            /* Add padding equal to header height */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            position: relative;
+            /* Create stacking context */
+        }
+
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #3498DB;
+            --accent-color: #E74C3C;
+            --light-gray: #ECF0F1;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Updated Header and Navigation Styles */
+        header {
+            background-color: var(--primary-color);
+            padding: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+            height: 70px;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            padding: 15px 20px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+        }
+
+        .nav-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            margin-left: auto;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 20px 25px;
+            display: block;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .nested-dropdown {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            display: none;
+            background-color: var(--primary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content .has-nested:hover .nested-dropdown {
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .nav-item:hover .dropdown-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 15px;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Navigation */
+        @media screen and (max-width: 1024px) {
+            .hamburger {
+                display: block;
+                margin-right: 15px;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .dropdown-content,
+            .nested-dropdown {
+                position: static;
+                width: 100%;
+                display: none;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-item.active .dropdown-content,
+            .has-nested.active .nested-dropdown {
+                display: block;
+            }
+
+            .nav-link {
+                padding: 15px 25px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown-content a {
+                padding-left: 40px;
+            }
+
+            .nested-dropdown a {
+                padding-left: 60px;
+            }
+        }
+
+
+        /* Header Styles */
+        .container1 {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .container1 h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .container1 p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+
+        /* Card Styles */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background-color: var(--card-hover);
+            color: #ffffff;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Alternate Section Backgrounds */
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        .bg-gradient {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .bg-gradient .section-title,
+        .bg-gradient .section-subtitle {
+            color: white;
+        }
+
+        /* Numbered List Styles */
+        .numbered-list {
+            list-style: none;
+            counter-reset: numbered-list;
+        }
+
+        .numbered-list li {
+            counter-increment: numbered-list;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .numbered-list li::before {
+            content: counter(numbered-list);
+            background-color: var(--secondary-color);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            background-color: var(--light-bg);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .container1 h2 {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .schedule {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .schedule-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            padding: 1.5rem;
+            transition: var(--transition);
+            border-bottom: 1px solid #eee;
+        }
+
+        .schedule-row:hover {
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        .time {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .activity {
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container1 {
+                padding: 2rem 1rem;
+            }
+
+            .container1 h1 {
+                font-size: 2rem;
+            }
+
+            .container1 h2 {
+                font-size: 1.2rem;
+            }
+
+            .schedule-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .time {
+                color: var(--secondary-color);
+                font-size: 1rem;
+            }
+
+            .step {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .step {
+                padding: 1.5rem;
+            }
+
+            .card-icon {
+                font-size: 2.5rem;
+                color: var(--secondary-color);
+            }
+        }
+
+        /* Animation classes */
+        .animate__animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        .animate__fadeInUp {
+            animation-name: fadeInUp;
+        }
+
+        .schedule-row:nth-child(odd) {
+            background-color: rgba(247, 247, 247, 0.5);
+        }
+
+        /* Floating animation for steps */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .step {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .step:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .step:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 1rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container1 h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <i class="fas fa-globe-americas"></i>
+                <span>The Expatlives </span>
+            </a>
+            <button type="button" class="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="campustocorporat.html" class="nav-link">Campus to Corporate</a>
+                </li>
+                <li class="nav-item">
+                    <a href="Foriegn languages.html" class="nav-link">Foreign languages ▾</a>
+                    <div class="dropdown-content">
+                        <a href="french.html">French</a>
+                        <a href="german.html">German</a>
+                        <a href="spaniish.html">Spanish</a>
+                        <a href="japanese.html">Japanese</a>
+                        <a href="chinese.html">Mandarin</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Coaching ▾</a>
+                    <div class="dropdown-content">
+                        <a href="ielts.html">IELTS</a>
+                        <a href="pte.html">PTE</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="visa.html" class="nav-link">Visas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Study Abroad▾</a>
+                    <div class="dropdown-content">
+                        <a href="uk.html">UK</a>
+                        <a href="usa.html">USA</a>
+                        <a href="germany.html">Germany</a>
+                        <a href="australia.html">Australia</a>
+                        <a href="newzealand.html">New Zealand</a>
+                        <a href="ireland.html">Ireland</a>
+                        <a href="canada.html">Canada</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="aboutus.html" class="nav-link">About us</a>
+                </li>
+            </ul>
+        </nav>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const hamburger = document.querySelector('.hamburger');
+                const navList = document.querySelector('.nav-list');
+                const navItems = document.querySelectorAll('.nav-item');
+                const hasNested = document.querySelectorAll('.has-nested');
+
+                hamburger.addEventListener('click', function () {
+                    navList.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                });
+
+                navItems.forEach(item => {
+                    if (item.querySelector('.dropdown-content')) {
+                        item.querySelector('.nav-link').addEventListener('click', function (e) {
+                            if (window.innerWidth <= 1024) {
+                                e.preventDefault();
+                                item.classList.toggle('active');
+
+                                navItems.forEach(otherItem => {
+                                    if (otherItem !== item) {
+                                        otherItem.classList.remove('active');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+
+                hasNested.forEach(item => {
+                    item.querySelector('a').addEventListener('click', function (e) {
+                        if (window.innerWidth <= 1024) {
+                            e.preventDefault();
+                            item.classList.toggle('active');
+
+                            hasNested.forEach(otherItem => {
+                                if (otherItem !== item) {
+                                    otherItem.classList.remove('active');
+                                }
+                            });
+                        }
+                    });
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (!navList.contains(e.target) && !hamburger.contains(e.target)) {
+                        navList.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+
+                window.addEventListener('resize', function () {
+                    if (window.innerWidth > 1024) {
+                        navList.classList.remove('active');
+                        hamburger.classList.remove('active');
+                        navItems.forEach(item => item.classList.remove('active'));
+                        hasNested.forEach(item => item.classList.remove('active'));
+                    }
+                });
+            });
+        </script>
+
+        <script>
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu after clicking
+                    navLinks.classList.remove('active');
+                });
+            });
+        </script>
+
+        <div class="container1">
+            <div class="container">
+                <h1>PTE Exam Preparation</h1>
+                <p>Get ready to ace the PTE exam with our comprehensive preparation guide.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-secondary">Start Preparing</a>
+                </div>
+            </div>
+        </div>
+
+
+        <section id="beginner">
+            <div class="container">
+                <h2 class="section-title">About PTE</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <i class="fas fa-book card-icon"></i>
+                        <h3>Computer-Based Test</h3>
+                        <p style="color: black;">The PTE exam is a fully computer-based test that assesses your English language proficiency.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-comments card-icon"></i>
+                        <h3>Global Recognition</h3>
+                        <p style="color: black;">PTE is accepted by thousands of universities, colleges, and governments worldwide.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-laptop card-icon"></i>
+                        <h3>Flexible Scheduling</h3>
+                        <p style="color: black;">You can take the PTE exam year-round at test centers located in over 50 countries.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="intermediate" class="bg-light">
+            <div class="container">
+                <h2 class="section-title">PTE Test Format</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <i class="fas fa-book-reader card-icon"></i>
+                        <h3>Speaking</h3>
+                        <p style="color: black;"> Speaking test assesses your spoken English through tasks like reading aloud, describing images, and discussing topics.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-pencil-alt card-icon"></i>
+                        <h3>Reading</h3>
+                        <p style="color: black;">Evaluates your reading comprehension and ability toanalyze written material.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-microphone card-icon"></i>
+                        <h3>Listening</h3>
+                        <p style="color: black;">Assesses your listening skills and ability to understand spoken English.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-book-reader card-icon"></i>
+                        <h3>Writing</h3>
+                        <p style="color: black;">Writing test assesses your writing skills through two tasks: a task 1 academic or general training writing task and a task 2 essay.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advanced" class="bg-gradient">
+            <div class="container">
+                <h2 class="section-title">PTE Resources</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <i class="fas fa-brain card-icon"></i>
+                        <h3>Study Guides</h3>
+                        <p>Comprehensive study materials to help you prepare for the PTE exam.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-pen-fancy card-icon"></i>
+                        <h3>Practice Tests</h3>
+                        <p>Take mock exams to familiarize yourself with the test format and question types.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="business">
+            <div class="container">
+                <h2 class="section-title">Tips for PTE Success</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <i class="fas fa-briefcase card-icon"></i>
+                        <h3>Practice Regularly</h3>
+                        <p style="color: black;">Familiarize yourself with the test format and question types through consistent practice.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-chart-line card-icon"></i>
+                        <h3>Enhance Vocabulary</h3>
+                        <p style="color: black;">Build a strong vocabulary to accurately express your thoughts and ideas.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-users card-icon"></i>
+                        <h3>Manage Time Wisely</h3>
+                        <p style="color: black;">Develop time management strategies to complete all tasks within the allocated time.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-rocket card-icon"></i>
+                        <h3>Stay Calm</h3>
+                        <p style="color: black;">Approach the exam with a positive mindset and avoid unnecessary stress</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="grammar" class="bg-gradient">
+            <div class="container">
+                <h2 class="section-title">PTE Scoring Bands and Test dates</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <i class="fas fa-book card-icon"></i>
+                        <h3>Scoring bands</h3>
+                        <p>Academic test scores range from 10 to 90, with 90 being the highest.You receive an overall score and individual scores for each skill: Speaking, Writing, Reading, and Listening</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-clock card-icon"></i>
+                        <h3>Test Dates</h3>
+                        <p>PTE Academic tests are conducted on various dates throughout the year at authorized Pearson Test Centers.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-paragraph card-icon"></i>
+                        <h3>Registration</h3>
+                        <p>Register online or through a local test center.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-form">
+                <h3>Inquire About Our Courses</h3> <br>
+                <p>Whether you're a beginner or an advanced learner, our team is here to guide you on your English
+                    language journey.</p><br>
+                <form name="contact-form" method="post" action="https://script.google.com/macros/s/AKfycbx3FKzC_4RoYZOX20uvwsT1R35E7NiX9xHfpgrh9VK3O_oFypzXLgw-DS9z3V_LClCX/exec">
+                    <input type="text" placeholder="Your Name" name="name" required>
+                    <input type="tel" placeholder="Your number" name="number" required>
+                    <textarea rows="4" placeholder="Your Message" name="message"></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About The Expatlives</h3>
+                    <p>We help expats navigate their journey abroad with comprehensive support and resources for a
+                        successful international lifestyle.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 91+ 9607621025</li>
+                        <li><i class="fas fa-phone"></i> 91+ 8600068599</li>
+                        <li><i class="fas fa-envelope"></i> info@theexpatlives.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Global Street, International City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 The Expatlives. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script src="google sheet.js"></script>
+</body>
+
+</html>

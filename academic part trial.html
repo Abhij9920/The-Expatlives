@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        .flow-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .flow-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            max-width: 120px;
+            justify-content: center;
+        }
+
+        .flow-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .flow-item.active {
+            border-left: 4px solid #f97316;
+            background: #fff7ed;
+        }
+
+        .icon {
+            display: none; /* Hide icons for mobile */
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: none;
+        }
+
+        .content-card.active {
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: #4b5563;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .illustration {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            color: #4b5563;
+        }
+
+        .learn-more {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            color: #4b5563;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more:hover {
+            background: #f8f9fa;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="flow-nav">
+            <div class="flow-item active" data-section="research">Research</div>
+            <div class="flow-item" data-section="admissions">Admissions</div>
+            <div class="flow-item" data-section="enrollment">Enrollment</div>
+            <div class="flow-item" data-section="campus">On Campus</div>
+            <div class="flow-item" data-section="academics">Academics</div>
+            <div class="flow-item" data-section="career">Career</div>
+        </nav>
+
+        <div class="content-card active" id="research">
+            <img src="/api/placeholder/300/200" alt="Research illustration" class="illustration">
+            <h1 class="card-title">Research</h1>
+            <p class="card-description">
+                Begin your educational journey with comprehensive research into programs, opportunities, and academic pathways available to international students.
+            </p>
+            <div class="feature-list">
+                <div class="feature-item">✓ Program exploration</div>
+                <div class="feature-item">✓ University comparison</div>
+                <div class="feature-item">✓ Requirements overview</div>
+                <div class="feature-item">✓ Cost analysis</div>
+            </div>
+            <a href="#" class="learn-more">Learn more →</a>
+        </div>
+
+        <!-- Additional content cards here -->
+    </div>
+
+    <script>
+        document.querySelectorAll('.flow-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Toggle active navigation
+                document.querySelectorAll('.flow-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                // Toggle content
+                document.querySelectorAll('.content-card').forEach(card => card.classList.remove('active'));
+                const sectionId = item.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

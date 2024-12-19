@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study in New Zealand - Immigration Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css"
+    />
+
+    <style>
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            padding-top: 70px;
+            /* Add padding equal to header height */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            position: relative;
+            /* Create stacking context */
+        }
+
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #3498DB;
+            --accent-color: #E74C3C;
+            --light-gray: #ECF0F1;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Updated Header and Navigation Styles */
+        header {
+            background-color: var(--primary-color);
+            padding: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+            height: 70px;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            padding: 15px 20px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+        }
+
+        .nav-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            margin-left: auto;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 20px 25px;
+            display: block;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .nested-dropdown {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            display: none;
+            background-color: var(--primary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content .has-nested:hover .nested-dropdown {
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .nav-item:hover .dropdown-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 15px;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Navigation */
+        @media screen and (max-width: 1024px) {
+            .hamburger {
+                display: block;
+                margin-right: 15px;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .dropdown-content,
+            .nested-dropdown {
+                position: static;
+                width: 100%;
+                display: none;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-item.active .dropdown-content,
+            .has-nested.active .nested-dropdown {
+                display: block;
+            }
+
+            .nav-link {
+                padding: 15px 25px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown-content a {
+                padding-left: 40px;
+            }
+
+            .nested-dropdown a {
+                padding-left: 60px;
+            }
+        }
+        .footer-link {
+            transition: all 0.2s ease;
+        }
+        
+        .footer-link:hover {
+            color: #1e40af;
+            padding-left: 4px;
+        }
+        </style>
+    <style>
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-content {
+            transition: max-height 0.3s ease-in-out;
+        }
+        
+        .faq-item button:focus {
+            outline: none;
+        }
+        
+        @keyframes slideDown {
+            from { max-height: 0; }
+            to { max-height: var(--max-height); }
+        }
+        
+        @keyframes slideUp {
+            from { max-height: var(--max-height); }
+            to { max-height: 0; }
+        }
+        </style>
+
+    <style>
+        /* Additional styles for the success stories section */
+        .successSwiper .swiper-slide {
+            opacity: 1 !important;
+        }
+        
+        .success-story-card {
+            transition: all 0.3s ease;
+        }
+        
+        .play-button {
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+    </style>
+
+    <style>
+      /* Hide scrollbar but keep functionality */
+      body {
+        overflow-x: hidden;
+        background-color: #e2e8f0;
+      }
+
+      /* Hide Swiper scrollbar */
+      .swiper-scrollbar {
+        display: none !important;
+      }
+
+      .swiper-wrapper {
+        overflow: visible !important;
+      }
+
+      .custom-underline {
+        position: relative;
+        display: inline-block;
+      }
+      .custom-underline::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #ef4444;
+        border-radius: 4px;
+        transform: rotate(-1deg);
+      }
+
+      .success-card {
+        background: white;
+        border-radius: 32px;
+        padding: 40px;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        opacity: 0.4;
+        transition: opacity 0.3s ease;
+      }
+
+      .swiper-slide-active .success-card {
+        opacity: 1;
+      }
+
+      .image-container {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        width: 100%;
+        height: 300px;
+      }
+
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-button {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      /* Container to prevent horizontal scroll */
+      .slider-container {
+        max-width: 100vw;
+        position: relative;
+        overflow: hidden;
+      }
+    </style>
+    <style>
+      .custom-underline {
+        position: relative;
+        display: inline-block;
+      }
+      .custom-underline::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #ef4444;
+        border-radius: 4px;
+        transform: rotate(-1deg);
+      }
+
+      .success-card {
+        background: white;
+        border-radius: 32px;
+        padding: 40px;
+        margin: 20px;
+      }
+
+      .image-container {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        width: 100%;
+        height: 300px;
+      }
+
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.9);
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-button {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .swiper-slide {
+        opacity: 0.4;
+        transition: opacity 0.3s ease;
+      }
+
+      .swiper-slide-active {
+        opacity: 1;
+      }
+
+      body {
+        background-color: #e2e8f0;
+      }
+    </style>
+    <style>
+      .custom-underline {
+        position: relative;
+        display: inline-block;
+      }
+      .custom-underline::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #ef4444;
+        border-radius: 4px;
+        transform: rotate(-1deg);
+      }
+
+      .tab-button {
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .tab-button.active {
+        background-color: #1e40af;
+        color: white;
+      }
+
+      .tab-button.active svg {
+        color: white;
+      }
+
+      .content-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+      }
+
+      .content-card.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .bullet-list {
+        list-style: none;
+        padding-left: 1.5rem;
+      }
+
+      .bullet-list li {
+        position: relative;
+        margin-bottom: 1rem;
+      }
+
+      .bullet-list li::before {
+        content: "•";
+        position: absolute;
+        left: -1.5rem;
+        color: #1e40af;
+      }
+    </style>
+    <style>
+      @keyframes slideInLeft {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .slide-in-left {
+        animation: slideInLeft 1s ease-out forwards;
+      }
+
+      .slide-in-right {
+        animation: slideInRight 1s ease-out forwards;
+      }
+
+      .custom-underline {
+        position: relative;
+        display: inline-block;
+      }
+
+      .custom-underline::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 8" fill="none"><path d="M0 4C20 0 80 0 100 4" stroke="%23ef4444" stroke-width="2"/></svg>')
+          no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .graduate-image {
+        position: relative;
+      }
+
+      .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background-color: var(--french-blue);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            /* border: 2px solid var(--french-gold); */
+            /* color: var(--french-gold); */
+            background-color: #1e40af;
+            color: white;
+        }
+    </style>
+    <style>
+      .custom-underline {
+        position: relative;
+        display: inline-block;
+      }
+      .custom-underline::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #ef4444;
+        border-radius: 4px;
+        transform: rotate(-1deg);
+      }
+      .cost-row {
+        transition: transform 0.3s ease;
+      }
+      .cost-row:hover {
+        transform: translateX(5px);
+        background-color: #f8fafc;
+      }
+    </style>
+    <style>
+      .custom-underline {
+        position: relative;
+        display: inline-block;
+      }
+      .custom-underline::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #ef4444;
+        border-radius: 4px;
+        transform: rotate(-1deg);
+      }
+      .swiper-pagination-bullet {
+        width: 40px !important;
+        height: 3px !important;
+        border-radius: 0 !important;
+        background: #6c6c6e !important;
+      }
+      .swiper-pagination-bullet-active {
+        background: #1e40af !important;
+      }
+      .university-card {
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem;
+        height: 100%;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      }
+    </style>
+
+    <style>
+      .custom-underline {
+        position: relative;
+        display: inline-block;
+      }
+      .custom-underline::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #ef4444;
+        border-radius: 4px;
+        transform: rotate(-1deg);
+      }
+      .course-card {
+        transition: transform 0.3s ease;
+      }
+      .course-card:hover {
+        transform: translateY(-5px);
+      }
+      .course-image {
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+        border-radius: 1rem;
+      }
+    </style>
+    <!-- Add custom styles for the underline effect -->
+    <style>
+      .custom-underline {
+        position: relative;
+      }
+      .custom-underline::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #f87171;
+        border-radius: 4px;
+        transform: rotate(-1deg);
+        z-index: -1;
+      }
+    </style>
+    <style>
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: #1e40af !important;
+        background: white;
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50%;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      }
+
+      .swiper-button-next:after,
+      .swiper-button-prev:after {
+        font-size: 20px !important;
+      }
+
+      .university-card {
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem;
+        height: 100%;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      }
+    </style>
+
+    <style>
+      .custom-underline {
+        position: relative;
+      }
+      .custom-underline::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #f87171;
+        border-radius: 4px;
+        transform: rotate(-1deg);
+        z-index: -1;
+      }
+    </style>
+
+    <style>
+        /* Custom styles for social icons hover effect */
+        .social-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-2px);
+        }
+    
+        /* Ensure image maintains aspect ratio */
+        .student-image {
+            object-fit: contain;
+            max-height: 500px;
+        }
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 1rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <script src="js/components.js"></script>
+      <div id="header"></div>
+
+
+      
+    
+      <!-- Hero Section -->
+      <div class="container mx-auto px-4 py-12 lg:py-20">
+
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <!-- Left Content -->
+          <div class="lg:w-1/2 mb-8 lg:mb-0">
+            <div class="max-w-xl">
+              <h1 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2">
+                New Zealand: <Span class="font-semibold "></Span>
+              </h1>
+              <h1 class="text-4xl lg:text-5xl font-semibold text-gray-900 mb-8">
+                Study in a land of knowledge and natural beauty
+              </h1>
+  
+              <div class="cta-buttons">
+                <a href="#start" class="btn btn-secondary">Free Expert Consultation</a>
+            </div>
+            </div>
+          </div>
+  
+          <!-- Right Image -->
+          <div class="lg:w-1/2 relative">
+            <div class="relative">
+              <img src="Uploads/study in usa.png" alt="Student with UK flag"
+                class="rounded-lg w-full max-w-md mx-auto object-cover" />
+  
+              <!-- Decorative Elements -->
+              <!-- <div class="absolute -top-4 -right-4">
+                              <img src="/api/placeholder/48/48" alt="" class="w-12 h-12">
+                          </div> -->
+              <!-- <div class="absolute top-1/4 -right-8">
+                              <img src="/api/placeholder/64/64" alt="" class="w-16 h-16">
+                          </div> -->
+  
+              <!-- Floating Icons -->
+              <!-- <div class="absolute top-12 left-0 transform -translate-x-1/2">
+                              <img src="/api/placeholder/40/40" alt="Graduate cap icon" class="w-10 h-10">
+                          </div>
+                          <div class="absolute bottom-20 right-0 transform translate-x-1/2">
+                              <img src="/api/placeholder/48/48" alt="UK flag icon" class="w-12 h-12">
+                          </div> -->
+            </div>
+          </div>
+        </div>
+  
+        <!-- Stats Section -->
+        <div class="mt-16 bg-gray-100 rounded-3xl shadow-lg">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-8">
+            <div class="text-center">
+              <h2 class="text-4xl font-bold text-blue-800">8 (Public Universities)</h2>
+              <p class="text-gray-600 mt-2 font-semibold">Universities</p>
+            </div>
+            <div class="text-center">
+              <h2 class="text-4xl font-bold text-blue-800">NZD 20k - NZD 40k</h2>
+              <p class="text-gray-600 mt-2  font-semibold">Annual tuition fees</p>
+            </div>
+            <div class="text-center">
+              <h2 class="text-4xl font-bold text-blue-800">120k+</h2>
+              <p class="text-gray-600 mt-2  font-semibold">International Students</p>
+            </div>
+            <div class="text-center">
+              <h2 class="text-4xl font-bold text-blue-800">3-Year Open Work Visa</h2>
+              <p class="text-gray-600 mt-2  font-semibold">Graduate Immigration Visa</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Chat Button -->
+      <button
+        class="fixed bottom-8 right-8 bg-blue-800 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300"
+        aria-label="Chat">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+          </path>
+        </svg>
+      </button>
+  
+      <div class="container mx-auto px-4 py-12">
+        <div class="flex flex-col lg:flex-row gap-12">
+          <!-- Left Content -->
+          <div class="lg:w-2/3">
+            <h2 class="text-4xl font-bold mb-12">
+              Why <span class="custom-underline">Study In New Zealand?</span>
+            </h2>
+  
+            <!-- Features List -->
+            <div class="space-y-8">
+              <!-- Feature 1 -->
+              <div class="flex gap-6 items-start">
+                <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">
+                    GLOBAL EDGE
+                  </h3>
+                  <p class="text-gray-600  font-semibold">
+                    The New Zealand has a plethora of institutions of higher education and research, much more than any other country. Despite the number of universities in New Zealand, it is the qualitative standards of education that matters which is respected worldwide.
+                  </p>
+                </div>
+              </div>
+  
+              <!-- Feature 2 -->
+              <div class="flex gap-6 items-start">
+                <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">CHOICE</h3>
+                  <p class="text-gray-600  font-semibold">
+                    More than 4000 accredited institutions offer undergraduate, postgraduate, and doctorate degrees. Overall, the universities in New Zealand have a variety of academic programs that offer you leading edge careers.
+                  </p>
+                </div>
+              </div>
+  
+              <!-- Feature 3 -->
+              <div class="flex gap-6 items-start">
+                <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">
+                    FIVE OF THE WORLD'S TOP 400 UNIVERSITIES
+                  </h3>
+                  <p class="text-gray-600  font-semibold">
+                    The New Zealand is home to universities that rank amongst the top 100 universities in the world according to the QS World Ranking. The universities in the New Zealand offer a diverse range of programs and cutting-edge research opportunities that attract students from around the globe.
+                  </p>
+                </div>
+              </div>
+  
+              <!-- Feature 4 -->
+              <div class="flex gap-6 items-start">
+                <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">FINANCIAL ASSISTANCE</h3>
+                  <p class="text-gray-600  font-semibold">
+                    The decision to study in New Zealand is a wise investment for the future. With various options on tuition fees, accommodation choices, and financial support like scholarships and fee waivers, it is affordable and convenient.
+                  </p>
+                </div>
+              </div>
+  
+              <!-- Feature 5 -->
+              <div class="flex gap-6 items-start">
+                <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">FLEXIBILITY</h3>
+                  <p class="text-gray-600  font-semibold">
+                    New Zealand universities offer flexible course structures, part-time study options, work opportunities, post-study work visas, and a supportive environment for international students.
+                  </p>
+                </div>
+              </div>
+  
+              <!-- Feature 6 -->
+              <div class="flex gap-6 items-start">
+                <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">AFFORDABLE</h3>
+                  <p class="text-gray-600">
+                    Education in the New Zealand becomes more feasible with financial aid, scholarships, and assistantships. Students can work up to 20 hours a week during their courses (on campus only), easing the financial burden.
+                  </p>
+                </div>
+              </div>
+  
+              <!-- Feature 7 -->
+              <div class="flex gap-6 items-start">
+                <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold mb-2">TECHNOLOGY & RESEARCH</h3>
+                  <p class="text-gray-600">
+                    New Zealand is a hub for technological innovation and research, particularly in areas like agriculture, biotechnology, information technology, and renewable energy. </p>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Right Content - Form -->
+          <div class="lg:w-1/3" id="start">
+            <div class="bg-white rounded-lg p-6 shadow-lg">
+              <h3 class="text-xl font-bold text-blue-800 mb-6">
+                Book your Free Consultation with Trustworthy Counsellors
+              </h3>
+              <form class="space-y-4" method="post" name="contact-form">
+                <input type="text" placeholder="Name" name="name"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <input type="email" placeholder="Email" name="email"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <input type="tel" placeholder="Mobile Number" name="number"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <input type="text" placeholder="Preferred Course" name="course"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <button type="submit"
+                  class="w-full bg-blue-800 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Universities List Section -->
+      <div class="mt-20 bg-gray-200" style="border-radius: 50px">
+        <div class="container mx-auto px-4 py-12">
+          <!-- Title Section -->
+          <h2 class="text-5xl font-bold text-center mb-6">
+            List Of Universities <span class="custom-underline font-semibold">In New Zealand</span>
+          </h2>
+          <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto text-1xl">
+            The New Zealand is a top choice for international students seeking a prestigious education. Here are some top universities where we have successfully placed students.
+          </p>
+
+          <!-- Slider Section -->
+          <div class="swiper universitySwiper">
+            <div class="swiper-wrapper mb-10">
+              <!-- University 1 -->
+              <div class="swiper-slide">
+                <div class="university-card">
+                  <div class="flex items-center gap-4 mb-6">
+                    <h3 class="text-xl font-bold">The University of Auckland</h3>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                      <svg
+                        class="w-6 h-6 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138"
+                        />
+                      </svg>
+                      <p>QS World Ranking 68</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- University 2 -->
+              <div class="swiper-slide">
+                <div class="university-card">
+                  <div class="flex items-center gap-4 mb-6">
+                    <h3 class="text-xl font-bold">University of Otago</h3>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                      <svg
+                        class="w-6 h-6 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4"
+                        />
+                      </svg>
+                      <p>QS World Ranking 206</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="university-card">
+                  <div class="flex items-center gap-4 mb-6">
+                    <h3 class="text-xl font-bold">Victoria University of Wellington</h3>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                      <svg
+                        class="w-6 h-6 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4"
+                        />
+                      </svg>
+                      <p>QS World Ranking 241</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="university-card">
+                  <div class="flex items-center gap-4 mb-6">
+                    <h3 class="text-xl font-bold">University of Canterbury</h3>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                      <svg
+                        class="w-6 h-6 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4"
+                        />
+                      </svg>
+                      <p>QS World Ranking 256</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="university-card">
+                  <div class="flex items-center gap-4 mb-6">
+                    <h3 class="text-xl font-bold">University of Waikato</h3>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                      <svg
+                        class="w-6 h-6 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4"
+                        />
+                      </svg>
+                      <p>QS World Ranking 250</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="university-card">
+                  <div class="flex items-center gap-4 mb-6">
+                    <h3 class="text-xl font-bold">Massey University</h3>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                      <svg
+                        class="w-6 h-6 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4"
+                        />
+                      </svg>
+                      <p>QS World Ranking 239</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="university-card">
+                  <div class="flex items-center gap-4 mb-6">
+                    <h3 class="text-xl font-bold">Lincoln University</h3>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                      <svg
+                        class="w-6 h-6 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4"
+                        />
+                      </svg>
+                      <p>QS World Ranking 362</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="university-card">
+                  <div class="flex items-center gap-4 mb-6">
+                    <h3 class="text-xl font-bold">Auckland University of Technology</h3>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                      <svg
+                        class="w-6 h-6 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12l2 2 4-4"
+                        />
+                      </svg>
+                      <p>QS World Ranking 412</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Add more universities following the same pattern -->
+              <!-- Include at least 6-7 more universities -->
+            </div>
+            <!-- Pagination -->
+            <div class="swiper-pagination mt-10"></div>
+          </div>
+
+          <!-- <div class="center-btn button text-center mt-10 border" style="border: 1px solid gray;">
+                        <a href="../univ-page-flow.aspx" class="button line">View Our Partnered Universities</a>
+                    </div> -->
+        </div>
+      </div>
+      
+    <!-- </div> -->
+
+    
+
+    <div class="container mt-15 mx-auto px-4 py-16 ">
+      <!-- Title Section -->
+      <h2 class="text-4xl font-bold text-center mb-6">
+        Popular Courses <span class="custom-underline font-semibold">In The New Zealand</span>
+      </h2>
+      <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+        Studying in the New Zealand provides international students with excellent career opportunities.
+        Here are the top courses in New Zealand for international students:
+      </p>
+
+      <!-- Courses Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Business Management -->
+        <div class="course-card">
+          <div class="relative overflow-hidden">
+            <img
+              src="Uploads/business manegement.jpg"
+              alt="Business Management"
+              class="course-image"
+            />
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3
+                class="text-xl font-bold text-center text-white bg-black bg-opacity-50 py-4 rounded-lg"
+              >
+                Business Management
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Engineering -->
+        <div class="course-card">
+          <div class="relative overflow-hidden">
+            <img
+              src="Uploads/education.png"
+              alt="Engineering"
+              class="course-image"
+            />
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3
+                class="text-xl font-bold text-center text-white bg-black bg-opacity-50 py-4 rounded-lg"
+              >
+                Engineering
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Computer Science -->
+        <div class="course-card">
+          <div class="relative overflow-hidden">
+            <img
+              src="Uploads/computer science.jpg"
+              alt="Computer Science"
+              class="course-image"
+            />
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3
+                class="text-xl font-bold text-center text-white bg-black bg-opacity-50 py-4 rounded-lg"
+              >
+                Computer Science
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Law -->
+        <div class="course-card">
+          <div class="relative overflow-hidden">
+            <img
+              src="Uploads/law.jpg"
+              alt="Law"
+              class="course-image"
+            />
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3
+                class="text-xl font-bold text-center text-white bg-black bg-opacity-50 py-4 rounded-lg"
+              >
+                Law
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finance -->
+        <div class="course-card">
+          <div class="relative overflow-hidden">
+            <img
+              src="Uploads/finance.jpg"
+              alt="Finance"
+              class="course-image"
+            />
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3
+                class="text-xl font-bold text-center text-white bg-black bg-opacity-50 py-4 rounded-lg"
+              >
+                Finance
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Architecture -->
+        <div class="course-card">
+          <div class="relative overflow-hidden">
+            <img
+              src="Uploads/architecture.jpg"
+              alt="Architecture"
+              class="course-image"
+            />
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3
+                class="text-xl font-bold text-center text-white bg-black bg-opacity-50 py-4 rounded-lg"
+              >
+                Architecture
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto mt-14 px-4 py-16 bg-gray-200" style="border-radius: 50px">
+      <div class="flex flex-col lg:flex-row gap-12">
+        <!-- Left Section - Information -->
+        <div class="lg:w-1/3 ml-12">
+          <h2 class="text-5xl font-bold mb-4">
+            Cost Of Studying
+            <br />
+            <span class="custom-underline font-semibold">In New Zealand</span>
+          </h2>
+          <p class="text-gray-700 mt-8 leading-relaxed" style="font-size: 18px">
+            The cost of studying in New Zealand for international students depends on several factors, including the institution, program of study, location, and available funding opportunities. Additionally, living expenses such as rent, utilities, and recreational activities play a significant role in the overall cost.
+          </p>
+        </div>
+
+        <!-- Right Section - Cost Tables -->
+        <div class="lg:w-2/3 space-y-8 mr-12">
+          <!-- Tuition Fees Section -->
+          <div>
+            <h3 class="text-xl text-gray-600 mb-4">
+              Tuition Fees (Average per annum)
+            </h3>
+            <div class="space-y-3">
+              <!-- Foundation Program -->
+              <div
+                class="cost-row flex items-center justify-between bg-white rounded-full p-4 shadow-sm"
+              >
+                <span class="font-semibold text-xl ml-2"
+                  >Associate Degree</span
+                >
+                <span class="text-right text-xl mr-4">NZD 15,000 – 20,000</span>
+              </div>
+
+              <!-- Bachelor's -->
+              <div
+                class="cost-row flex items-center justify-between bg-white rounded-full p-4 shadow-sm"
+              >
+                <span class="font-semibold text-xl ml-2">Bachelor's</span>
+                <span class="text-right text-xl mr-4">NZD 15,000 – 40,000</span>
+              </div>
+
+              <!-- Master's -->
+              <div
+                class="cost-row flex items-center justify-between bg-white rounded-full p-4 shadow-sm"
+              >
+                <span class="font-semibold text-xl ml-2">Master's</span>
+                <span class="text-right text-xl mr-4">NZD 15,000 – 50,000</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Living Expenses Section -->
+          <div>
+            <h3 class="text-lg text-gray-600 mb-4">
+              Living Expenses (Average per month)
+            </h3>
+            <div class="space-y-3">
+              <!-- Outer London -->
+              <div
+                class="cost-row flex items-center justify-between bg-white rounded-full p-4 shadow-sm"
+              >
+                <span class="font-semibold text-xl ml-2">Approx </span>
+                <span class="text-right text-xl mr-4">NZD 16,000</span>
+              </div>
+
+              <!-- Inner London -->
+              <!-- <div
+                class="cost-row flex items-center justify-between bg-white rounded-full p-4 shadow-sm"
+              >
+                <span class="font-semibold text-xl ml-2">Inner London</span>
+                <span class="text-right text-xl mr-4">£1,483</span>
+              </div> -->
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg text-gray-600 mb-4">
+                Accommodation (Average per month)
+            </h3>
+            <div class="space-y-3">
+              <!-- Outer London -->
+              <div
+                class="cost-row flex items-center justify-between bg-white rounded-full p-4 shadow-sm"
+              >
+                <span class="font-semibold text-xl ml-2">On-Campus
+                    </span>
+                <span class="text-right text-xl mr-4">NZD 800 – 900</span>
+              </div>
+
+              <!-- Inner London -->
+              <div
+                class="cost-row flex items-center justify-between bg-white rounded-full p-4 shadow-sm"
+              >
+                <span class="font-semibold text-xl ml-2">Off-Campus Rental</span>
+                <span class="text-right text-xl mr-4">NZD 500 – 1,500</span>
+              </div>
+
+              <div
+                class="cost-row flex items-center justify-between bg-white rounded-full p-4 shadow-sm"
+              >
+                <span class="font-semibold text-xl ml-2">Homestay
+                    </span>
+                <span class="text-right text-xl mr-4">NZD 1,000 – 1,200</span>
+              </div>
+            </div>
+
+            
+          </div>
+
+          
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-16 overflow-hidden">
+      <div
+        class="flex flex-col lg:flex-row items-center justify-between gap-12"
+      >
+        <!-- Left Content -->
+        <div class="lg:w-1/2 slide-in-left">
+          <h2 class="text-5xl font-bold mb-6">
+            Scholarships <span class="custom-underline">In New Zealand</span>
+          </h2>
+          <div class="space-y-6 text-gray-700">
+            <p class="leading-relaxed">
+                New Zealand's scholarships are offered based on academic merit, financial need, or community involvement. Candidates with strong academics, good performance on standardized exams and extra-curricular achievements are eligible for scholarships to study in New Zealand.
+
+                There are several different types of scholarships for Indian students to study in New Zealand – Fellowships, Assistantships, Sports, Need Based , etc.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="lg:w-1/2 slide-in-right relative">
+          <div class="graduate-image relative">
+            <!-- Decorative Elements -->
+            <!-- <div class="decorative-line" style="top: -30px; right: -30px; transform: rotate(45deg);"></div> -->
+            <div
+              class="decorative-line"
+              style="bottom: -30px; left: -30px; transform: rotate(-45deg)"
+            ></div>
+
+            <img
+              src="Uploads/study in new zealand.png"
+              alt="Graduate Student"
+              class="rounded-lg relative z-10 mx-auto"
+            />
+
+            <!-- Flying Certificate Icon -->
+            <!-- <img 
+                            src="/api/placeholder/40/40" 
+                            alt="Certificate" 
+                            class="absolute top-10 right-10 transform rotate-12"
+                        > -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-16">
+      <!-- Title -->
+      <h2 class="text-3xl font-bold text-center mb-12 font-semibold">
+        More About <span class="custom-underline font-bold"> New Zealand</span>
+      </h2>
+
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Left Side Tabs -->
+        <div class="lg:w-1/4 space-y-4" id="tabs">
+          <button
+            class="tab-button flex items-center gap-3 w-full p-4 rounded-lg text-left"
+            data-tab="documents"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            Documents
+          </button>
+          <button
+            class="tab-button flex items-center gap-3 w-full p-4 rounded-lg text-left"
+            data-tab="visa"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"
+              />
+            </svg>
+            Visa
+          </button>
+        </div>
+
+        <!-- Right Side Content -->
+        <div class="lg:w-3/4" id="content">
+          <!-- Documents Section -->
+          <div
+            class="content-card bg-white p-8 rounded-2xl shadow-sm"
+            id="documents-content"
+            style="border: 1px solid gray"
+          >
+            <h3 class="text-2xl font-bold mb-6">
+                Documents required to study in  New Zealand
+            </h3>
+            <p class="text-gray-700 mb-6">
+                When applying for a course in New Zealand as an international student, you typically need several documents to complete the application process. These documents may vary depending on the institution and the specific program, but some common ones include:
+            </p>
+            <ul class="bullet-list text-gray-700">
+              <li>
+                Application Form
+              </li>
+              <li>
+                Application Fees
+              </li>
+              <li>
+                Statement of Purpose / Essays
+              </li>
+              <li>Marksheets & Certificates</li>
+              <li>Curriculum Vitae/Resume.</li>
+              <li>
+                Resume
+              </li>
+              <li>Recommendation Letters</li>
+              <li>Bank Certificate</li>
+              <li>
+                Declaration Certificate of Finance.
+              </li>
+              <li>
+                Test Score Report.
+              </li>
+            </ul>
+            <div class="cta-buttons">
+              <a href="#start" class="btn btn-secondary">Free Expert Consultation</a>
+          </div>
+          </div>
+
+          <!-- Visa Section -->
+          <div
+            class="content-card bg-white p-8 rounded-2xl shadow-sm hidden"
+            id="visa-content"
+            style="border: 1px solid gray"
+          >
+            <h3 class="text-2xl font-bold mb-6">New Zealand study visa process</h3>
+            <p class="text-gray-700 mb-6">
+                All the efforts to study abroad become futile if you do not present your case effectively and assertively during visa interviews. We provide comprehensive VISA guidance, which includes verifying the bank financial statement, latest update on VISA TECHNOLOGY & RESEARCH, mock interviews, etc. Mentioned below are the general steps for the procurement of a study visa in the New Zealand
+            </p>
+            <ul class="bullet-list text-gray-700">
+              <li>Valid Health Insurance: Obtain approved health insurance for your study duration.</li>
+              <li>Prepare Academic Documents: Include transcripts, certificates, and resumes; provide work experience for education gaps.</li>
+              <li>Proof of Genuine Student (GS): Submit a statement showcasing your intentions and future plans.</li>
+              <li>
+                Pay Visa Application Fees
+              </li>
+              <li>Schedule an Interview: Arrange and prepare for a visa interview if required.</li>
+              <li>Visa Processing Time: Typically takes 4 to 8 weeks for approval.</li>
+
+            </ul>
+            <div class="cta-buttons">
+              <a href="#start" class="btn btn-secondary">Free Expert Consultation</a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-16">
+        <h2 class="text-4xl font-bold text-center mb-12">FAQs</h2>
+        
+        <div class="max-w-8xl mx-auto justify-center space-y-4">
+            <!-- FAQ Item 1 -->
+
+                <button class="w-full bg-white rounded-[20px] p-6 flex justify-between items-center border border-blue-100 hover:border-blue-200 transition-all duration-300">
+                    <span class="text-[30px] font-semibold text-blue-800">What are the popular courses to study in New Zealand?</span>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 bg-white rounded-b-[20px] px-6">
+                    <div class="py-6 text-gray-600 font-semibold text-xl">
+                        
+                      New Zealand offers a wide range of courses, including business, engineering, IT, health sciences, and creative arts.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+                <button class="w-full bg-white rounded-[20px] p-6 flex justify-between items-center border border-blue-100 hover:border-blue-200 transition-all duration-300">
+                    <span class="text-[30px] font-semibold text-blue-800">What are the English language requirements for studying in New Zealand?</span>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 bg-white rounded-b-[20px] px-6">
+                    <div class="py-6 text-gray-600 font-semibold text-xl">
+                      Most universities require proof of English language proficiency through tests like IELTS, TOEFL, or PTE Academic.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Add more FAQ items with the same structure -->
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+                <button class="w-full bg-white rounded-[20px] p-6 flex justify-between items-center border border-blue-100 hover:border-blue-200 transition-all duration-300">
+                    <span class="text-[30px] font-semibold text-blue-800">Can I work while studying in New Zealand?</span>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 bg-white rounded-b-[20px] px-6">
+                    <div class="py-6 text-gray-600 font-semibold text-xl">
+                      Yes, international students can work part-time during studies and full-time during breaks.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+                <button class="w-full bg-white rounded-[20px] p-6 flex justify-between items-center border border-blue-100 hover:border-blue-200 transition-all duration-300">
+                    <span class="text-[30px] font-semibold text-blue-800">What is the cost of living in New Zealand for international students?</span>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 bg-white rounded-b-[20px] px-6">
+                    <div class="py-6 text-gray-600 font-semibold text-xl">
+                      The cost of living varies, but generally, you can expect to spend around NZD 20,000-25,000 per year.
+                    </div>
+                </div>
+            </div>
+    
+            <!-- FAQ Item 5 -->
+            <div class="faq-item">
+                <button class="w-full bg-white rounded-[20px] p-6 flex justify-between items-center border border-blue-100 hover:border-blue-200 transition-all duration-300">
+                    <span class="text-[30px] font-semibold text-blue-800">How can I apply for a student visa to New Zealand?</span>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 text-blue-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+                <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 bg-white rounded-b-[20px] px-6">
+                    <div class="py-6 text-gray-600 font-semibold text-xl">
+                      You'll need an offer letter from a university, proof of funds, health insurance, and a valid passport to apply for a student visa online.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+          <div class="footer-section">
+              <h3>About The Expatlives</h3>
+              <p>We help expats navigate their journey abroad with comprehensive support and resources for a
+                  successful international lifestyle.</p>
+              <div class="social-links">
+                  <a href="#"><i class="fab fa-facebook"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-linkedin"></i></a>
+              </div>
+          </div>
+          <div class="footer-section">
+              <h3>Contact Info</h3>
+              <ul>
+                  <li><i class="fas fa-phone"></i> 91+ 9607621025</li>
+                  <li><i class="fas fa-phone"></i> 91+ 8600068599</li>
+                  <li><i class="fas fa-envelope"></i> info@theexpatlives.com</li>
+                  <li><i class="fas fa-map-marker-alt"></i>245, ijmima building, mindspace, malad west, mumbai 400064.</li>
+              </ul>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2024 The Expatlives. All rights reserved.</p>
+      </div>
+  </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+    
+        faqItems.forEach(item => {
+            const button = item.querySelector('button');
+            const content = item.querySelector('.faq-content');
+            const svg = item.querySelector('svg');
+    
+            button.addEventListener('click', () => {
+                const isOpen = content.classList.contains('active');
+                
+                // Close all FAQs
+                faqItems.forEach(otherItem => {
+                    const otherContent = otherItem.querySelector('.faq-content');
+                    const otherSvg = otherItem.querySelector('svg');
+                    
+                    otherContent.style.maxHeight = '0px';
+                    otherContent.classList.remove('active');
+                    otherSvg.style.transform = 'rotate(0deg)';
+                    otherItem.querySelector('button').classList.remove('rounded-b-none');
+                });
+    
+                // Open clicked FAQ if it was closed
+                if (!isOpen) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.classList.add('active');
+                    svg.style.transform = 'rotate(180deg)';
+                    button.classList.add('rounded-b-none');
+                }
+            });
+        });
+    });
+    </script>
+    
+    <script>
+        const successSwiper = new Swiper(".swiper1", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            speed: 800,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".next-button",
+                prevEl: ".prev-button",
+            },
+            on: {
+                slideChange: function () {
+                    // Add fade effect manually
+                    const slides = document.querySelectorAll('.swiper1 .swiper-slide');
+                    slides.forEach(slide => {
+                        slide.style.opacity = '0';
+                        slide.style.transition = 'opacity 0.5s ease';
+                    });
+                    setTimeout(() => {
+                        const activeSlide = document.querySelector('.swiper1 .swiper-slide-active');
+                        if (activeSlide) {
+                            activeSlide.style.opacity = '1';
+                        }
+                    }, 100);
+                }
+            }
+        });
+    </script>
+    <script>
+      const tabButtons = document.querySelectorAll(".tab-button");
+      const contentCards = document.querySelectorAll(".content-card");
+      const tabs = document.getElementById("tabs");
+
+      // Function to activate tab and content
+      function activateTab(tabId) {
+        // Update tab buttons
+        tabButtons.forEach((button) => {
+          if (button.dataset.tab === tabId) {
+            button.classList.add("active");
+          } else {
+            button.classList.remove("active");
+          }
+        });
+
+        // Update content cards
+        contentCards.forEach((card) => {
+          if (card.id === `${tabId}-content`) {
+            card.classList.add("active");
+            card.classList.remove("hidden");
+          } else {
+            card.classList.remove("active");
+            card.classList.add("hidden");
+          }
+        });
+      }
+
+      // Initialize first tab
+      activateTab("documents");
+
+      // Scroll-based tab switching
+      window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY;
+        contentCards.forEach((card) => {
+          const cardTop = card.offsetTop;
+          const cardHeight = card.offsetHeight;
+
+          if (
+            scrollPosition >= cardTop - 300 &&
+            scrollPosition < cardTop + cardHeight - 300
+          ) {
+            const tabId = card.id.replace("-content", "");
+            activateTab(tabId);
+          }
+        });
+      });
+
+      // Click handling for tabs
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const tabId = button.dataset.tab;
+          activateTab(tabId);
+
+          // Scroll to content
+          const content = document.getElementById(`${tabId}-content`);
+          content.scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    </script>
+    <script>
+      // Trigger animations when elements come into view
+      function handleIntersection(entries, observer) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.visibility = "visible";
+            entry.target.classList.add(entry.target.dataset.animation);
+            observer.unobserve(entry.target);
+          }
+        });
+      }
+
+      const observer = new IntersectionObserver(handleIntersection, {
+        threshold: 0.1,
+      });
+
+      document
+        .querySelectorAll(".slide-in-left, .slide-in-right")
+        .forEach((element) => {
+          element.style.visibility = "hidden";
+          observer.observe(element);
+        });
+    </script>
+    <script>
+      const swiper = new Swiper(".universitySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        autoplay: {
+          delay: 3500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+          1280: {
+            slidesPerView: 4,
+          },
+        },
+        on: {
+          slideChange: function () {
+            // Animate the pagination bullets
+            const bullets = document.querySelectorAll(
+              ".swiper-pagination-bullet"
+            );
+            bullets.forEach((bullet) => {
+              bullet.style.transition = "width 0.3s ease";
+            });
+          },
+        },
+      });
+    </script>
+
+    <script>
+      // Optional: Add hover animation for smoother interaction
+      document.querySelectorAll(".course-card").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.style.transform = "translateY(-5px)";
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "translateY(0)";
+        });
+      });
+    </script>
+
+    <!-- Optional: Add Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <script src="google sheet2.js"></script>
+  </body>
+</html>
+                                                                        

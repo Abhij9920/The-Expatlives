@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Visa Guide</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --background-color: #f8f9fa;
+            --text-color: #2b2d42;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding-top: 70px;
+            /* Add padding equal to header height */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            position: relative;
+            /* Create stacking context */
+            overflow-x: hidden;
+        }
+
+        /* Updated Header and Navigation Styles */
+        header {
+            background-color: var(--primary-color);
+            padding: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+            height: 70px;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            padding: 15px 20px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+        }
+
+        .nav-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            margin-left: auto;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 20px 25px;
+            display: block;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .nested-dropdown {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            display: none;
+            background-color: var(--primary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content .has-nested:hover .nested-dropdown {
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .nav-item:hover .dropdown-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 15px;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Navigation */
+        @media screen and (max-width: 1024px) {
+            .hamburger {
+                display: block;
+                margin-right: 15px;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .dropdown-content,
+            .nested-dropdown {
+                position: static;
+                width: 100%;
+                display: none;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-item.active .dropdown-content,
+            .has-nested.active .nested-dropdown {
+                display: block;
+            }
+
+            .nav-link {
+                padding: 15px 25px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown-content a {
+                padding-left: 40px;
+            }
+
+            .nested-dropdown a {
+                padding-left: 60px;
+            }
+        }
+
+        .header1 {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+
+        }
+
+        .header1 h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            font-size: 1.8rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .process-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .process-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .process-card i {
+            color: var(--accent-color);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--accent-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--accent-color);
+            top: 15px;
+            right: -13px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item.right::after {
+            left: -13px;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .requirements-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .requirements-list li {
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            padding-left: 2.5rem;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .requirements-list li::before {
+            content: '✓';
+            color: var(--accent-color);
+            position: absolute;
+            left: 1rem;
+            font-weight: bold;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        input, textarea, select {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+            text-align: center;
+        }
+
+        .alert-info {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+            border: 1px solid #bbdefb;
+        }
+
+        @media (max-width: 768px) {
+            .header1 h1 {
+                font-size: 2rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item.right {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 18px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .requirements-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 1rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+    <style>
+        .hhhh{
+            background-color: #0d47a1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header" class="hhhh"></div>
+        <script src="js/components.js"></script>
+        <br/>
+        <br/>
+     
+      
+        
+    <section class="header1">
+        <div class="header-content">
+            <h1>Your Guide to Student Visa Success</h1>
+            <p>Complete information about study visa requirements, application process, and more</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section">
+            <h2><i class="fas fa-list-check"></i> Visa Requirements</h2>
+            <ul class="requirements-list">
+                <li>Valid Passport with at least 6 months validity beyond your intended stay</li>
+                <li>Official Acceptance Letter from an accredited educational institution</li>
+                <li>Proof of Financial Support showing sufficient funds for tuition and living expenses</li>
+                <li>Academic Transcripts and Certificates (with certified translations if needed)</li>
+                <li>English Language Proficiency Test Results (IELTS/TOEFL/PTE)</li>
+                <li>Statement of Purpose explaining your study plans</li>
+                <li>Recent Passport-size Photographs</li>
+                <li>Medical Examination Reports (if required)</li>
+                <li>Proof of Health Insurance Coverage</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-road"></i> Application Process</h2>
+            <div class="process-grid">
+                <div class="process-card">
+                    <h3><i class="fas fa-school"></i> Step 1: University Acceptance</h3>
+                    <p>Apply and secure admission to your chosen institution. Ensure you receive an official acceptance letter that includes your program details and duration.</p>
+                </div>
+                <div class="process-card">
+                    <h3><i class="fas fa-money-check"></i> Step 2: Financial Documentation</h3>
+                    <p>Prepare recent bank statements, scholarship letters, or sponsorship documents showing adequate funds for your entire study period and living expenses.</p>
+                </div>
+                <div class="process-card">
+                    <h3><i class="fas fa-file-alt"></i> Step 3: Document Preparation</h3>
+                    <p>Gather and organize all required documents, including academic records, language test scores, and any additional country-specific requirements.</p>
+                </div>
+                <div class="process-card">
+                    <h3><i class="fas fa-edit"></i> Step 4: Visa Application</h3>
+                    <p>Complete the online visa application form accurately. Double-check all information and pay the required visa processing fees.</p>
+                </div>
+                <div class="process-card">
+                    <h3><i class="fas fa-calendar-check"></i> Step 5: Interview Scheduling</h3>
+                    <p>Book your visa interview appointment at the nearest embassy or consulate. Prepare thoroughly for common interview questions.</p>
+                </div>
+                <div class="process-card">
+                    <h3><i class="fas fa-comments"></i> Step 6: Visa Interview</h3>
+                    <p>Attend the interview with confidence, bringing all original documents. Be prepared to discuss your study plans and future goals clearly.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-clock"></i> Processing Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Week 1-2</h3>
+                        <p>Document collection and preparation. Getting translations and certifications if needed.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Week 3</h3>
+                        <p>Online application submission, fee payment, and initial processing</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Week 4</h3>
+                        <p>Interview scheduling and preparation time for documentation review</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Week 5-6</h3>
+                        <p>Visa processing, background checks, and final decision making</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Week 7</h3>
+                        <p>Passport collection with visa and travel preparation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-envelope"></i> Get Expert Assistance</h2>
+            <div class="alert alert-info" id="submitAlert">Thank you for your message! We'll get back to you shortly.</div>
+            <form class="contact-form" id="contactForm" name="contact-form" method="post" action="https://script.google.com/macros/s/AKfycbyYbiegehwZ2IOWRnyHeR37ZrUBTIZAC07QAXpGHzLdSPfmseryIs6Pb-ezt5OVzScT/exec">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="Enter your full name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Number</label>
+                    <input type="tel" id="number" required placeholder="Enter your Number" name="number">
+                </div>
+                <div class="form-group">
+                    <label for="country">Desired Study Country</label>
+                    <select id="country" required name="country">
+                        <option value="">Select Country</option>
+                        <option value="usa">United States</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="canada">Canada</option>
+                        <option value="australia">Australia</option>
+                        <option value="australia">Ireland</option>
+                        <option value="australia">New zealand</option>
+                        <option value="australia">Germany</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" rows="4" required placeholder="Tell us about your study plans and any questions you have" name="message"></textarea>
+                </div>
+                <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <script src="google sheet4.js"></script>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About The Expatlives</h3>
+                <p>We help expats navigate their journey abroad with comprehensive support and resources for a
+                    successful international lifestyle.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> 91+ 9607621025</li>
+                    <li><i class="fas fa-phone"></i> 91+ 8600068599</li>
+                    <li><i class="fas fa-envelope"></i> info@theexpatlives.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 245, ijmima building, mindspace, malad west, mumbai 400064.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 The Expatlives. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const alert = document.getElementById('submitAlert');
+            alert.style.display = 'block';
+            this.reset();
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 3000);
+        });
+
+        // Animation on scroll
+        const sections = document.querySelectorAll('.section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            observer.observe(section);
+        });
+
+        

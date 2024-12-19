@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus to Corporate Program</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            padding-top: 70px;
+            /* Add padding equal to header height */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            position: relative;
+            /* Create stacking context */
+        }
+
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #3498DB;
+            --accent-color: #E74C3C;
+            --light-gray: #ECF0F1;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Updated Header and Navigation Styles */
+        header {
+            background-color: var(--primary-color);
+            padding: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+            height: 70px;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            padding: 15px 20px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+        }
+
+        .nav-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            margin-left: auto;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 20px 25px;
+            display: block;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .nested-dropdown {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            display: none;
+            background-color: var(--primary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content .has-nested:hover .nested-dropdown {
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .nav-item:hover .dropdown-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 15px;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Navigation */
+        @media screen and (max-width: 1024px) {
+            .hamburger {
+                display: block;
+                margin-right: 15px;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .dropdown-content,
+            .nested-dropdown {
+                position: static;
+                width: 100%;
+                display: none;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-item.active .dropdown-content,
+            .has-nested.active .nested-dropdown {
+                display: block;
+            }
+
+            .nav-link {
+                padding: 15px 25px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown-content a {
+                padding-left: 40px;
+            }
+
+            .nested-dropdown a {
+                padding-left: 60px;
+            }
+        }
+
+
+        .program-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 1rem;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background-color: var(--french-blue);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            /* border: 2px solid var(--french-gold); */
+            /* color: var(--french-gold); */
+            background-color:cornflowerblue;
+            color: white;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        /* Contact Section */
+        .contact {
+            padding: 5rem 1rem;
+            background-color: white;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-form {
+            padding: 2rem;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #c0392b;
+        }
+
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 1rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="header"></div>
+        <script src="js/components.js"></script>
+
+        <div class="font-sans">
+            <!-- Hero Section -->
+            <div class="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-20">
+                <div class="container mx-auto px-4 text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Campus to Corporate Program</h1>
+                    <p class="text-xl opacity-90">Transition seamlessly from campus life to the corporate world!</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-secondary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Programs Section -->
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl font-bold text-center mb-12">Programs We Offer</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Campus to Corporate Card -->
+                    <div class="program-card bg-white rounded-lg shadow-lg p-6 border border-gray-200">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Campus to Corporate Program</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Interview Skills</li>
+                            <li>• Resume Writing</li>
+                            <li>• Communication Skills</li>
+                            <li>• First Impression</li>
+                            <li>• Dining Etiquette</li>
+                            <li>• Global Etiquette</li>
+                            <li>• Image Enhancement</li>
+                            <li>• Mock Interview</li>
+                        </ul>
+                    </div>
+
+                    <!-- International Placement Card -->
+                    <div class="program-card bg-white rounded-lg shadow-lg p-6 border border-gray-200">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">International Placement Program</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• International Resume Writing</li>
+                            <li>• International Interview Skills</li>
+                            <li>• Personality Development</li>
+                            <li>• Communication Skills</li>
+                            <li>• Cultural Awareness</li>
+                            <li>• Global Etiquette</li>
+                            <li>• English Speaking Skills</li>
+                            <li>• Dining Etiquette</li>
+                        </ul>
+                    </div>
+
+                    <!-- English Speaking Card -->
+                    <div class="program-card bg-white rounded-lg shadow-lg p-6 border border-gray-200">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">English Speaking Program</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Grammar</li>
+                            <li>• Vocabulary Building</li>
+                            <li>• Pronunciation</li>
+                            <li>• Conversational Skills</li>
+                            <li>• Fluency Development</li>
+                            <li>• Listening Skills</li>
+                            <li>• Speaking Practice</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us Section -->
+            <div class="bg-gray-50 py-16">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold text-center mb-12">Why Choose These Programs?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <h3 class="text-xl font-bold mb-3">Comprehensive Skill Development</h3>
+                            <p class="text-gray-600">These programs are designed to prepare you for the professional
+                                world, enhancing your confidence, communication skills, and cultural awareness.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <h3 class="text-xl font-bold mb-3">Global Opportunities</h3>
+                            <p class="text-gray-600">Our training ensures you are equipped for international placements,
+                                by giving you a competative edge in the professional industry and making you stand out
+                                in the global job market.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <h3 class="text-xl font-bold mb-3">Tailored for Success</h3>
+                            <p class="text-gray-600">Each program is tailored to meet the demands of corporate
+                                environments, ensuring a seamless transition from campus to career.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <h3 class="text-xl font-bold mb-3">Expert Trainers</h3>
+                            <p class="text-gray-600">Learn from industry professionals and seasoned trainers who bring
+                                real-world experience to the table.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="faq-item border rounded-lg">
+                        <button class="w-full flex justify-between items-center p-4 focus:outline-none">
+                            <span class="font-semibold">What is the duration of each program?</span>
+                            <svg class="w-6 h-6 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-4 pb-4">
+                            <p class="text-gray-600">The duration varies depending on the program chosen , ranging from
+                                4 to 12 weeks.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item border rounded-lg">
+                        <button class="w-full flex justify-between items-center p-4 focus:outline-none">
+                            <span class="font-semibold">Are the programs online or offline?</span>
+                            <svg class="w-6 h-6 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-4 pb-4">
+                            <p class="text-gray-600">The Program will be conducted Online.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item border rounded-lg">
+                        <button class="w-full flex justify-between items-center p-4 focus:outline-none">
+                            <span class="font-semibold">Who can enroll in these programs?</span>
+                            <svg class="w-6 h-6 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-4 pb-4">
+                            <p class="text-gray-600">Anyone looking to enhance their professional skills and overall
+                                personality, including students , fresh graduates and working professionals can enroll.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item border rounded-lg">
+                        <button class="w-full flex justify-between items-center p-4 focus:outline-none">
+                            <span class="font-semibold">What are the fees for these programs?</span>
+                            <svg class="w-6 h-6 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-4 pb-4">
+                            <p class="text-gray-600">The fees depend on the program selected. Contact us for detailed
+                                pricing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="contact" id="contact">
+                <div class="section-title">
+                    <h2>Get in Touch</h2>
+                    <p>We're here to help you start your journey</p>
+                </div>
+                <div class="contact-container">
+                    <div class="contact-form">
+                        <form method="post" name="contact-form" action="https://script.google.com/macros/s/AKfycbx3FKzC_4RoYZOX20uvwsT1R35E7NiX9xHfpgrh9VK3O_oFypzXLgw-DS9z3V_LClCX/exec">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Number">Number</label>
+                                <input type="tel" id="number" name="number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+    
+
+            <!-- Footer -->
+            <footer>
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>About The Expatlives</h3>
+                        <p>We help expats navigate their journey abroad with comprehensive support and resources for a
+                            successful international lifestyle.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact Info</h3>
+                        <ul>
+                            <li><i class="fas fa-phone"></i> 91+ 9607621025</li>
+                            <li><i class="fas fa-phone"></i> 91+ 8600068599</li>
+                            <li><i class="fas fa-envelope"></i> info@theexpatlives.com</li>
+                            <li><i class="fas fa-map-marker-alt"></i> 245, ijmima building, mindspace, malad west, mumbai 400064.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 The Expatlives. All rights reserved.</p>
+                </div>
+            </footer>
+
+
+            <script>
+                document.querySelectorAll('.faq-item button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const faqItem = button.parentElement;
+                        faqItem.classList.toggle('active');
+                    });
+                });
+            </script>
+        </div>
+
+        <script src="google sheet.js"></script>
+</body>
+
+</html>

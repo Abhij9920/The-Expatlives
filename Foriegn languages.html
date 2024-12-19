@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The ExpatLives Language Academy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #FFA500;
+            --text-color: #333;
+            --bg-color: #f0f4f8;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(Uploads/slide3.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(242, 237, 237, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            background-image: url('https://source.unsplash.com/1600x900/?communication,global');
+            background-size: cover;
+            background-position: center;
+            padding: 50px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+            border-radius: 15px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        .language-info {
+            padding: 50px 0;
+            background-color: #ffffff;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .language-box {
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+            border: 2px solid transparent;
+            color: black;
+            text-decoration: none;
+            display: block;
+        }
+
+        .language-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
+            transition: all 0.3s ease;
+        }
+
+        .language-box:hover::before {
+            opacity: 0.2;
+        }
+
+        .language-box * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .language-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .language-box h3 {
+            margin-top: 0;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .language-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .language-box:hover .language-icon {
+            transform: scale(1.2);
+        }
+
+        .language-description {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .language-greeting {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .language-fact {
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0;
+            transition: all 0.3s ease;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            transform: translateY(100%);
+            color: black; /* Ensure the text color is always black */
+        }
+
+        .language-box:hover .language-fact {
+            opacity: 1;
+            transform: translateY(0);
+            color: black; /* Explicitly set the color to black on hover */
+        }
+
+        /* Language-specific styles */
+        .language-box[data-language="french"] {
+            border-color: #0055A4;
+        }
+
+        .language-box[data-language="french"]:hover {
+            background-color: #0055A4;
+            color: white;
+        }
+
+        .language-box[data-language="german"] {
+            border-color: #FFCC00;
+        }
+
+        .language-box[data-language="german"]:hover {
+            background-color: #FFCC00;
+            color: black;
+        }
+
+        .language-box[data-language="spanish"] {
+            border-color: #C60B1E;
+        }
+
+        .language-box[data-language="spanish"]:hover {
+            background-color: #C60B1E;
+            color: white;
+        }
+
+        .language-box[data-language="japanese"] {
+            border-color: #BC002D;
+        }
+
+        .language-box[data-language="japanese"]:hover {
+            background-color: #BC002D;
+            color: white;
+        }
+
+        .language-box[data-language="mandarin"] {
+            border-color: #DE2910;
+        }
+
+        .language-box[data-language="mandarin"]:hover {
+            background-color: #DE2910;
+            color: white;
+        }
+
+        .course-offerings {
+            padding: 50px 0;
+            background-color: var(--bg-color);
+        }
+
+        .offerings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .offering-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .offering-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .offering-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .fun-fact {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 50px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .fun-fact h3 {
+            margin-top: 0;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .language-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="floating-elements" class="floating-elements"></div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Embark on Your Global Language Adventure</h1>
+                <p>Unlock new cultures, connect with people worldwide, and boost your career prospects</p>
+                <a href="#languages" class="cta-button">Discover Our Language Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="languages" class="language-info">
+        <div class="container">
+            <h2>Our Immersive Language Experiences</h2>
+            <div class="language-grid">
+                <a href="french.html" class="language-box" data-language="french">
+                    <div class="language-icon">🇫🇷</div>
+                    <h3>French</h3>
+                    <p class="language-description">Immerse yourself in the language of love, art, and diplomacy.</p>
+                    <p class="language-greeting">Bonjour!</p>
+                    <p class="language-fact">"Did you know? French is an official language in 29 countries!"</p>
+                </a>
+                <a href="german.html" class="language-box" data-language="german">
+                    <div class="language-icon">🇩🇪</div>
+                    <h3>German</h3>
+                    <p class="language-description">Master the language of thinkers, innovators, and economic powerhouses.</p>
+                    <p class="language-greeting">Guten Tag!</p>
+                    <p class="language-fact">"Fun fact: German has over 300 dialects!"</p>
+                </a>
+                <a href="spaniish.html" class="language-box" data-language="spanish">
+                    <div class="language-icon">🇪🇸</div>
+                    <h3>Spanish</h3>
+                    <p class="language-description">Open doors to vibrant cultures across continents.</p>
+                    <p class="language-greeting">¡Hola!</p>
+                    <p class="language-fact">"Interesting: Spanish has the world's 2nd largest population of native speakers!"</p>
+                </a>
+                <a href="japanese.html" class="language-box" data-language="japanese">
+                    <div class="language-icon">🇯🇵</div>
+                    <h3>Japanese</h3>
+                    <p class="language-description">Dive into the fascinating world of anime, technology, and tradition.</p>
+                    <p class="language-greeting">こんにちは (Konnichiwa)!</p>
+                    <p class="language-fact">"Cool fact: Japanese has three different writing systems!"</p>
+                </a>
+                <a href="chinese.html" class="language-box" data-language="mandarin">
+                    <div class="language-icon">🇨🇳</div>
+                    <h3>Mandarin</h3>
+                    <p class="language-description">Unlock opportunities in the world's most spoken language.</p>
+                    <p class="language-greeting">你好 (Nǐ hǎo)!</p>
+                    <p class="language-fact">"Amazing: Mandarin has over 50,000 characters, but you only need 2-3,000 for daily use!"</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="course-offerings">
+        <div class="container">
+            <h2>Why Choose ExpatLives for Your Language Journey</h2>
+            <div class="offerings-grid">
+                <div class="offering-card">
+                    <div class="offering-icon">🌏</div>
+                    <h3>Tailored for Expats</h3>
+                    <p>Our courses are uniquely designed to help expats integrate seamlessly into their host countries, focusing on practical language skills and cultural nuances.</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon">🤝</div>
+                    <h3>Community-Driven Learning</h3>
+                    <p>Join a thriving network of fellow expats and language enthusiasts, offering support, motivation, and shared learning experiences.</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon">🗣️</div>
+                    <h3>Real-Life Conversations</h3>
+                    <p>Practice language skills through immersive conversation sessions led by native speakers and experienced tutors.</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon">🎭</div>
+                    <h3>Cultural Immersion</h3>
+                    <p>Experience local traditions, events, and activities that bring language learning to life in an engaging and authentic way.</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon">💻</div>
+                    <h3>Flexible Online Learning</h3>
+                    <p>Participate in live, interactive online courses designed for busy expats, ensuring flexibility and accessibility from anywhere in the world.</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon">💼</div>
+                    <h3>Career Advancement</h3>
+                    <p>Enhance your professional opportunities with industry-specific language training tailored to expat career paths.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="fun-fact">
+            <h3>Global Language Insight</h3>
+            <p id="fun-fact-text">Loading fascinating language fact...</p>
+        </div>
+    </div>
+
+    <div class="scroll-to-top">↑</div>
+    
+    <div id="footer"></div>
+
+    <script src="js/components.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const funFacts = [
+                "There are over 7,000 languages spoken in the world today!",
+                "Learning a new language can improve your decision-making skills.",
+                "Bilingual individuals often have better memory and multitasking abilities.",
+                "The most widely spoken language in the world is Mandarin Chinese.",
+                "Language learning can delay the onset of dementia by several years.",
+                "Some languages, like Piraha, have no words for specific numbers.",
+                "The hardest language to learn depends on your native tongue!",
+                "Sign language is a complete language with its own grammar and vocabulary.",
+                "Some words, like 'OK', are recognized in almost every country.",
+                "Learning a language can literally change the structure of your brain!"
+            ];
+
+            function displayRandomFunFact() {
+                const funFactText = document.getElementById('fun-fact-text');
+                const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+                funFactText.style.opacity = 0;
+                setTimeout(() => {
+                    funFactText.textContent = randomFact;
+                    funFactText.style.opacity = 1;
+                }, 500);
+            }
+
+            displayRandomFunFact();
+            setInterval(displayRandomFunFact, 10000);
+
+            const languageBoxes = document.querySelectorAll('.language-box');
+            const languageThemes = {
+                french: {
+                    color: '#0055A4',
+                    image: 'https://source.unsplash.com/featured/?paris,eiffeltower'
+                },
+                german: {
+                    color: '#FFCC00',
+                    image: 'https://source.unsplash.com/featured/?germany,castle'
+                },
+                spanish: {
+                    color: '#C60B1E',
+                    image: 'https://source.unsplash.com/featured/?spain,flamenco'
+                },
+                japanese: {
+                    color: '#BC002D',
+                    image: 'https://source.unsplash.com/featured/?japan,cherryblossom'
+                },
+                mandarin: {
+                    color: '#DE2910',
+                    image: 'https://source.unsplash.com/featured/?china,greatwall'
+                }
+            };
+
+            languageBoxes.forEach(box => {
+                const language = box.getAttribute('data-language');
+                const theme = languageThemes[language];
+
+                box.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = theme.color;
+                    this.style.color = (language === 'german') ? 'black' : 'white';
+                });
+
+                box.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '';
+                    this.style.color = 'black';
+                });
+            });
+
+            const scrollToTopBtn = document.querySelector('.scroll-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            const heroSection = document.querySelector('.hero');
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.pageYOffset;
+                heroSection.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+            });
+        });
+    </script>
+</body>
+</html>
+

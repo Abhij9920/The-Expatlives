@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Polish - Master the Language</title>
+    <link href="css/all2.min.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <script src="https://kit.fontawesome.com/bf07ff0e11.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            padding-top: 70px;
+            /* Add padding equal to header height */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            position: relative;
+            /* Create stacking context */
+        }
+
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #3498DB;
+            --accent-color: #E74C3C;
+            --light-gray: #ECF0F1;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Updated Header and Navigation Styles */
+        header {
+            background-color: var(--primary-color);
+            padding: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+            height: 70px;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            padding: 15px 20px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+        }
+
+        .nav-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            margin-left: auto;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 20px 25px;
+            display: block;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .nested-dropdown {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            display: none;
+            background-color: var(--primary-color);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content .has-nested:hover .nested-dropdown {
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .nav-item:hover .dropdown-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 15px;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Navigation */
+        @media screen and (max-width: 1024px) {
+            .hamburger {
+                display: block;
+                margin-right: 15px;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .dropdown-content,
+            .nested-dropdown {
+                position: static;
+                width: 100%;
+                display: none;
+                background-color: rgba(0, 17, 255, 0.1);
+            }
+
+            .nav-item.active .dropdown-content,
+            .has-nested.active .nested-dropdown {
+                display: block;
+            }
+
+            .nav-link {
+                padding: 15px 25px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown-content a {
+                padding-left: 40px;
+            }
+
+            .nested-dropdown a {
+                padding-left: 60px;
+            }
+        }
+
+        /* Custom Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        /* Level tabs animation */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Hover effects */
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 1rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="header"></div>
+        <script src="js/components.js"></script>
+
+        <div class="relative min-h-screen bg-gradient-to-b from-indigo-900 via-blue-900 to-blue-800 overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[url('/images/spain-pattern.jpg')] bg-cover bg-center"></div>
+
+        
+            <!-- Hero Content -->
+            <div class="container mx-auto px-4 py-24 relative">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+                        Master Polish with Excellence
+                    </h1>
+                    <p class="text-xl text-blue-100 mb-12 animate-slide-up">
+                        Join our comprehensive Polish language program and unlock a world of opportunities.
+                        From beginner to advanced levels, embark on a journey to fluency.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <button
+                            class="bg-white text-blue-900 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transform hover:scale-105 transition-all shadow-lg">
+                            Start Your Journey
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Features Section -->
+        <div class="py-32 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Why Choose Our Polish Program?</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Experience a comprehensive learning journey with our expert-designed curriculum and native
+                        speakers.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="feature-card bg-blue-50 p-8 rounded-2xl">
+                        <div class="w-14 h-14 bg-blue-900 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-users text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Native Instructors</h3>
+                        <p class="text-gray-600">Learn from experienced native Polish speakers dedicated to your
+                            success.</p>
+                    </div>
+
+                    <div class="feature-card bg-blue-50 p-8 rounded-2xl">
+                        <div class="w-14 h-14 bg-blue-900 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-book text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Structured Curriculum</h3>
+                        <p class="text-gray-600">Progressive learning path from A1 to C2 levels following European
+                            standards.</p>
+                    </div>
+
+                    <div class="feature-card bg-blue-50 p-8 rounded-2xl">
+                        <div class="w-14 h-14 bg-blue-900 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-globe text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Cultural Immersion</h3>
+                        <p class="text-gray-600">Experience Polish culture through interactive activities and events.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Levels Section -->
+        <div class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-16">Choose Your Level</h2>
+
+                <!-- Level Tabs -->
+                <div class="flex justify-center mb-12 gap-4">
+                    <button class="level-tab px-6 py-3 rounded-lg font-medium bg-blue-900 text-white"
+                        data-tab="beginner">
+                        Beginner
+                    </button>
+                    <button class="level-tab px-6 py-3 rounded-lg font-medium bg-white text-gray-600"
+                        data-tab="intermediate">
+                        Intermediate
+                    </button>
+                    <button class="level-tab px-6 py-3 rounded-lg font-medium bg-white text-gray-600"
+                        data-tab="advanced">
+                        Advanced
+                    </button>
+                </div>
+
+                <!-- Level Content -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <!-- Beginner Level Content -->
+                    <div id="beginner-content" class="tab-content active">
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-6 p-6 bg-blue-50 rounded-xl">
+                                <div
+                                    class="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <span class="text-xl font-bold text-white">A1</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2">Absolute Beginner</h3>
+                                    <p class="text-gray-600 mb-4">
+                                        Start your Polish journey with essential vocabulary and basic phrases.
+                                    </p>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                            <span>Basic greetings and introductions</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                            <span>Numbers and basic counting</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                            <span>Simple present tense</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-6 p-6 bg-blue-50 rounded-xl">
+                                <div
+                                    class="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <span class="text-xl font-bold text-white">A2</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2">Elementary</h3>
+                                    <p class="text-gray-600 mb-4">
+                                        Build on your foundation with more complex sentences and daily conversations.
+                                    </p>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                            <span>Past and future tenses</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                            <span>Daily routines and activities</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check-circle text-green-500"></i>
+                                            <span>Basic conversation skills</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add similar sections for intermediate and advanced levels -->
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exam Section -->
+        <div class="py-20 bg-blue-900 text-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-16">Official Polish Exams</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- DELE -->
+                    <div class="bg-white/10 backdrop-blur-lg p-8 rounded-xl hover:bg-white/20 transition-all">
+                        <i class="fas fa-award text-4xl mb-6 text-blue-300"></i>
+                        <h3 class="text-xl font-bold mb-4">Eighth Grade Exam</h3>
+                        <p class="text-blue-100 mb-6">
+                            Primary school exit exam with accommodations for non-native speakers.
+                        </p>
+                    </div>
+
+                    <!-- SIELE -->
+                    <div class="bg-white/10 backdrop-blur-lg p-8 rounded-xl hover:bg-white/20 transition-all">
+                        <i class="fas fa-globe text-4xl mb-6 text-blue-300"></i>
+                        <h3 class="text-xl font-bold mb-4">Matura Exam</h3>
+                        <p class="text-blue-100 mb-6">
+                            High school graduation and university entrance exam with language support for foreigners.
+                        </p>
+                    </div>
+
+                    <!-- AP Spanish -->
+                    <div class="bg-white/10 backdrop-blur-lg p-8 rounded-xl hover:bg-white/20 transition-all">
+                        <i class="fas fa-graduation-cap text-4xl mb-6 text-blue-300"></i>
+                        <h3 class="text-xl font-bold mb-4">Polish Language Proficiency Exam </h3>
+                        <p class="text-blue-100 mb-6">
+                            Certifies Polish skills for academic or citizenship purposes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-16">Courses</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Course Card 1 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="bg-blue-900 text-white p-4">
+                            <h3 class="text-xl font-bold">Beginner Polish</h3>
+                            <p class="text-blue-200">A1-A2 Level</p>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-4">
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-clock text-blue-900"></i>
+                                    <span>Mon-Fri, 60min-90min</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-clock text-blue-900"></i>
+                                    <span>Sat-sun, 90min-120min</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-users text-blue-900"></i>
+                                    <span>12 students max</span>
+                                </li>
+                            </ul>
+                            <button
+                                class="w-full mt-6 bg-blue-900 text-white py-3 rounded-lg hover:bg-blue-800 transition-colors">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 2 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="bg-blue-900 text-white p-4">
+                            <h3 class="text-xl font-bold">Intermediate Polish</h3>
+                            <p class="text-blue-200">B1-B2 Level</p>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-4">
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-clock text-blue-900"></i>
+                                    <span>Mon-Fri, 60min-90min</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-clock text-blue-900"></i>
+                                    <span>Sat-sun, 90min-120min</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-users text-blue-900"></i>
+                                    <span>12 students max</span>
+                                </li>
+                            </ul>
+                            <button
+                                class="w-full mt-6 bg-blue-900 text-white py-3 rounded-lg hover:bg-blue-800 transition-colors">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 3 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="bg-blue-900 text-white p-4">
+                            <h3 class="text-xl font-bold">Advanced Polish</h3>
+                            <p class="text-blue-200">C1-C2 Level</p>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-4">
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-clock text-blue-900"></i>
+                                    <span>Mon-Fri, 60min-90min</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-clock text-blue-900"></i>
+                                    <span>Sat-sun, 90min-120min</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-users text-blue-900"></i>
+                                    <span>12 students max</span>
+                                </li>
+                            </ul>
+                            <button
+                                class="w-full mt-6 bg-blue-900 text-white py-3 rounded-lg hover:bg-blue-800 transition-colors">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact Form Section -->
+        <div class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold text-center mb-16">Get in Touch</h2>
+                    <div class="bg-gray-50 rounded-2xl p-8 shadow-lg">
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Name</label>
+                                    <input type="text" placeholder=""
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Number</label>
+                                    <input type="tel"
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Subject</label>
+                                <input type="text"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Message</label>
+                                <textarea rows="4"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-blue-900 text-white py-3 rounded-lg hover:bg-blue-800 transition-colors">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About The Expatlives</h3>
+                    <p>We help expats navigate their journey abroad with comprehensive support and resources for a
+                        successful international lifestyle.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 91+ 9607621025</li>
+                        <li><i class="fas fa-phone"></i> 91+ 8600068599</li>
+                        <li><i class="fas fa-envelope"></i> info@theexpatlives.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i>245, ijmima building, mindspace, malad west, mumbai 400064.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 The Expatlives. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- Add JavaScript for interactivity -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Tab switching functionality
+                const tabs = document.querySelectorAll('.level-tab');
+                const contents = document.querySelectorAll('.tab-content');
+
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        // Remove active class from all tabs
+                        tabs.forEach(t => {
+                            t.classList.remove('bg-blue-900', 'text-white');
+                            t.classList.add('bg-white', 'text-gray-600');
+                        });
+
+                        // Add active class to clicked tab
+                        tab.classList.remove('bg-white', 'text-gray-600');
+                        tab.classList.add('bg-blue-900', 'text-white');
+
+                        // Hide all content sections
+                        contents.forEach(content => {
+                            content.classList.remove('active');
+                        });
+
+                        // Show selected content
+                        const targetContent = document.getElementById(`${tab.dataset.tab}-content`);
+                        targetContent.classList.add('active');
+                    });
+                });
+
+                // Mobile menu functionality
+                const mobileMenuButton = document.querySelector('.mobile-menu-button');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+
+                function toggleMobileMenu() {
+                    mobileMenu.classList.toggle('translate-x-0');
+                    mobileMenu.classList.toggle('-translate-x-full');
+                    mobileMenuOverlay.classList.toggle('hidden');
+                    document.body.classList.toggle('overflow-hidden');
+                }
+
+                mobileMenuButton?.addEventListener('click', toggleMobileMenu);
+                mobileMenuOverlay?.addEventListener('click', toggleMobileMenu);
+
+                // Smooth scroll for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+
+                // Intersection Observer for animations
+                const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate-fade-in');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+
+                animatedElements.forEach(element => {
+                    observer.observe(element);
+                });
+
+                // Form validation and submission
+                const contactForm = document.querySelector('#contact-form');
+                if (contactForm) {
+                    contactForm.addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        // Basic form validation
+                        const name = this.querySelector('[name="name"]').value;
+                        const email = this.querySelector('[name="email"]').value;
+                        const message = this.querySelector('[name="message"]').value;
+
+                        if (!name || !email || !message) {
+                            alert('Please fill in all required fields');
+                            return;
+                        }
+
+                        // Email validation
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(email)) {
+                            alert('Please enter a valid email address');
+                            return;
+                        }
+
+                        // Submit form - Add your form submission logic here
+                        console.log('Form submitted:', { name, email, message });
+
+                        // Reset form
+                        this.reset();
+
+                        // Show success message
+                        alert('Thank you for your message. We will get back to you soon!');
+                    });
+                }
+
+                // Course enrollment modal
+                const enrollButtons = document.querySelectorAll('.enroll-button');
+                const enrollModal = document.querySelector('#enroll-modal');
+                const closeModal = document.querySelector('.close-modal');
+
+                enrollButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const courseType = button.dataset.course;
+                        const courseLevel = button.dataset.level;
+
+                        // Update modal content based on selected course
+                        if (enrollModal) {
+                            const modalTitle = enrollModal.querySelector('.modal-title');
+                            if (modalTitle) {
+                                modalTitle.textContent = `Enroll in ${courseType} - ${courseLevel}`;
+                            }
+                            enrollModal.classList.remove('hidden');
+                        }
+                    });
+                });
+
+                closeModal?.addEventListener('click', () => {
+                    enrollModal?.classList.add('hidden');
+                });
+
+                // Close modal when clicking outside
+                window.addEventListener('click', (e) => {
+                    if (e.target === enrollModal) {
+                        enrollModal.classList.add('hidden');
+                    }
+                });
+
+                // Countdown timer for course registration
+                function updateCountdown() {
+                    const countdownElements = document.querySelectorAll('.countdown');
+
+                    countdownElements.forEach(element => {
+                        const deadline = new Date(element.dataset.deadline).getTime();
+                        const now = new Date().getTime();
+                        const distance = deadline - now;
+
+                        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+                        element.innerHTML = `${days}d ${hours}h ${minutes}m`;
+
+                        if (distance < 0) {
+                            element.innerHTML = "Registration Closed";
+                        }
+                    });
+                }
+
+                // Update countdown every minute
+                setInterval(updateCountdown, 60000);
+                updateCountdown();
+            });
+        </script>
+        <script src="js/script1.js"></script>
+</body>
+
+</html>

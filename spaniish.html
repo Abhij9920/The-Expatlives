@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Viva Español! - Learn Spanish with Passion</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FFF8E7;
+            color: #1D3557;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Spanish-themed color palette */
+        :root {
+            --color-red: #E63946;
+            --color-yellow: #FFD700;
+            --color-orange: #FF9F1C;
+            --color-blue: #1D3557;
+            --color-light-blue: #457B9D;
+            --color-cream: #F1FAEE;
+        }
+
+
+        /* Hero Section */
+        #hero {
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+            text-align: center;
+            background-image: url('https://source.unsplash.com/1600x900/?spain,flamenco');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:#FFD700;
+        }
+        #hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h1 span {
+            color: var(--color-yellow);
+        }
+        .hero-description {
+            font-size: 1.25rem;
+            color: #FFF;
+            margin-bottom: 2rem;
+            max-width: 36rem;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+        .button-outline {
+            background-color: transparent;
+            border: 1px solid #FFF;
+            color: #FFF;
+        }
+        .button-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .scroll-indicator {
+            margin-top: 3rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        section:nth-child(even) {
+            background-color: var(--color-cream);
+        }
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--color-red);
+            margin: 0.5rem auto 0;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        .card-icon {
+            font-size: 3rem;
+            color: var(--color-red);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .card:hover .card-icon {
+            transform: scale(1.1);
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            color: var(--color-light-blue);
+        }
+
+        /* Tabs */
+        .tabs {
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+        .tab-list {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--color-red);
+        }
+        .tab-button {
+            background-color: transparent;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-blue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .tab-button::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-red);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .tab-button.active::after {
+            transform: scaleX(1);
+        }
+        .tab-button:hover {
+            color: var(--color-red);
+        }
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Course and Exam Cards */
+        .course-card, .exam-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .course-card:hover, .exam-card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        .course-card h3, .exam-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-red);
+        }
+        .course-details, .exam-details {
+            color: var(--color-light-blue);
+            margin-bottom: 1rem;
+        }
+        .course-features {
+            list-style-type: none;
+            margin-bottom: 1.5rem;
+        }
+        .course-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .course-features li::before {
+            content: "🇪🇸";
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+        .course-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-red);
+            margin-bottom: 1rem;
+        }
+        .exam-levels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .level-badge {
+            background-color: var(--color-red);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        .level-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Spanish Culture Section */
+        .culture-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        .culture-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .culture-card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        .culture-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .culture-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Word of the Day */
+        #word-of-the-day {
+            background-color: var(--color-cream);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        #word-of-the-day:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        #word-of-the-day h3 {
+            color: var(--color-red);
+            margin-bottom: 1rem;
+        }
+        #word {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-blue);
+            margin-bottom: 0.5rem;
+        }
+        #translation {
+            font-style: italic;
+            color: var(--color-light-blue);
+            margin-bottom: 1rem;
+        }
+        #usage {
+            color: var(--color-blue);
+        }
+
+        /* Quiz Section */
+        #quiz {
+            background-color: var(--color-cream);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        #quiz h3 {
+            color: var(--color-red);
+            margin-bottom: 1rem;
+        }
+        #question {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--color-blue);
+        }
+        #options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        #options button {
+            background-color: var(--color-orange);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #options button:hover {
+            background-color: #e68a00;
+            transform: translateY(-2px);
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        #next-question {
+            background-color: var(--color-red);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        #next-question:hover {
+            background-color: #c5323e;
+            transform: translateY(-2px);
+        }
+
+        /* Spanish Phrases Carousel */
+        #phrases-carousel {
+            background-color: var(--color-cream);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .phrase-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .phrase {
+            flex: 0 0 100%;
+            padding: 1rem;
+        }
+        .phrase h4 {
+            color: var(--color-red);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .phrase p {
+            color: var(--color-blue);
+            font-style: italic;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--eiffel-gray);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--french-blue);
+            box-shadow: 0 0 0 3px rgba(0, 35, 149, 0.1);
+        }
+
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-light-blue);
+            color: white;
+            padding: 4rem 1rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+         /* Button Styles */
+         .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--color-orange);
+            color: rgb(3, 3, 3);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-red);
+            border: 2px solid white;
+            color: rgb(218, 106, 247);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 4rem;
+            }
+            .nav-links {
+                display: flex;
+                gap: 1.5rem;
+            }
+            .card-grid, .culture-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .course-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+            .exam-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                max-width: 64rem;
+                margin: 0 auto;
+            }
+            #options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <nav id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="nav-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <span>¡Viva Español!</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#why-spanish">¿Por qué español?</a>
+                    <a href="#levels">Niveles</a>
+                    <a href="#courses">Cursos</a>
+                    <a href="#exams">Exámenes</a>
+                    <a href="#culture">Cultura</a>
+                    <a href="#quiz">Quiz</a>
+                </div>
+                <button class="nav-button" onclick="scrollToSection('courses')">¡Empieza ya!</button>
+            </div>
+        </div>
+    </nav> -->
+
+    <div id="header"></div>
+    <section id="hero">
+        <div class="container">
+            <h1>Discover the Magic of <span>Spanish</span></h1>
+            <p class="hero-description">Embark on a journey to master one of the world's most beautiful and widely spoken languages</p>
+            <div class="cta-buttons">
+                <a href="#courses" class="btn btn-secondary">Start Your Journey</a>
+                <a href="#why-spanish" class="btn btn-secondary">Learn More</a>
+            </div>
+            <div class="scroll-indicator" onclick="scrollToSection('why-spanish')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-spanish">
+        <div class="container">
+            <h2>Why Learn Spanish?</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🌎</div>
+                    <h3>Global Communication</h3>
+                    <p>Connect with over 500 million Spanish speakers worldwide, across 21 countries where it's the official language.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Career Opportunities</h3>
+                    <p>Enhance your resume and access international job markets in Spain, Latin America, and beyond.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎭</div>
+                    <h3>Cultural Immersion</h3>
+                    <p>Experience rich Hispanic culture, from flamenco and salsa to Picasso and Gabriel García Márquez.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="levels">
+        <div class="container">
+            <h2>Language Levels</h2>
+            <div class="tabs">
+                <div class="tab-list">
+                    <button class="tab-button active" data-tab="beginner">Beginner (A1-A2)</button>
+                    <button class="tab-button" data-tab="intermediate">Intermediate (B1-B2)</button>
+                    <button class="tab-button" data-tab="advanced">Advanced (C1-C2)</button>
+                </div>
+                <div class="tab-content active" id="beginner">
+                    <div class="card">
+                        <h3>Beginner Level</h3>
+                        <ul class="course-features">
+                            <li>Basic conversations and greetings: "Hola", "¿Cómo estás?"</li>
+                            <li>Essential vocabulary and phrases</li>
+                            <li>Present simple tense: "Yo hablo español"</li>
+                            <li>Numbers and basic grammar</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content" id="intermediate">
+                    <div class="card">
+                        <h3>Intermediate Level</h3>
+                        <ul class="course-features">
+                            <li>Complex conversations on various topics</li>
+                            <li>Past and future tenses: "Yo fui" (I went), "Yo iré" (I will go)</li>
+                            <li>Subjunctive mood: "Espero que vengas" (I hope you come)</li>
+                            <li>Cultural nuances and idiomatic expressions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content" id="advanced">
+                    <div class="card">
+                        <h3>Advanced Level</h3>
+                        <ul class="course-features">
+                            <li>Near-native fluency and accent reduction</li>
+                            <li>Advanced grammar and extensive vocabulary</li>
+                            <li>Literary Spanish and analysis of Hispanic literature</li>
+                            <li>Professional and academic communication skills</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses">
+        <div class="container">
+            <h2>Our Spanish Courses</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <h3>Spanish Foundations (A1-A2)</h3>
+                    <div class="course-details">
+                        <p>Level: Beginner</p>
+                    </div>
+                    <ul class="course-features">
+                        <li>Master basic Spanish pronunciation and phonetics</li>
+                        <li>Learn essential vocabulary for everyday situations</li>
+                        <li>Grasp fundamental grammar structures (present tense, gender, numbers)</li>
+                    </ul>
+                    <p class="course-outcome">By the end, you'll be able to introduce yourself, ask for directions, order food, and engage in basic conversations about daily life.</p>
+                    <div class="cta-buttons">
+                        <a href="#start" class="btn btn-secondary">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>Spanish Proficiency (B1-B2)</h3>
+                    <div class="course-details">
+                        <p>Level: Intermediate</p>
+                    </div>
+                    <ul class="course-features">
+                        <li>Expand vocabulary to discuss a wide range of topics</li>
+                        <li>Master complex grammar (subjunctive, conditional, perfect tenses)</li>
+                        <li>Develop fluency in expressing opinions and emotions</li>
+                    </ul>
+                    <p class="course-outcome">By the end, you'll be able to converse fluently on various topics, understand Spanish media, and write coherent essays expressing your views.</p>
+                    <br/>
+                    <br/>
+                    <a href="#start" class="btn btn-secondary">Enroll Now</a>
+                </div>
+                <div class="course-card">
+                    <h3>Spanish Mastery (C1-C2)</h3>
+                    <div class="course-details">
+                        <p>Level: Advanced</p>
+                    </div>
+                    <ul class="course-features">
+                        <li>Refine advanced grammar and stylistics</li>
+                        <li>Analyze complex Spanish and Latin American literature</li>
+                        <li>Develop near-native fluency and accent reduction</li>
+                    </ul>
+                    <p class="course-outcome">By the end, you'll have near-native profiiency, able to understand and use Spanish in highly complex academic, professional, and social contexts.</p>
+                    <br/>
+                    <br/>
+                    <a href="#start" class="btn btn-secondary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="exams">
+        <div class="container">
+            <h2>Spanish Exams</h2>
+            <div class="exam-grid">
+                <div class="exam-card">
+                    <h3>DELE</h3>
+                    <div class="exam-details">
+                        <p>Diplomas of Spanish as a Foreign Language</p>
+                        <p>Official certification by Instituto Cervantes</p>
+                    </div>
+                    <div class="exam-levels">
+                        <span class="level-badge">A1</span>
+                        <span class="level-badge">A2</span>
+                        <span class="level-badge">B1</span>
+                        <span class="level-badge">B2</span>
+                        <span class="level-badge">C1</span>
+                        <span class="level-badge">C2</span>
+                    </div>
+                </div>
+                <div class="exam-card">
+                    <h3>SIELE</h3>
+                    <div class="exam-details">
+                        <p>International Spanish Language Evaluation Service</p>
+                        <p>Digital certification of Spanish proficiency</p>
+                    </div>
+                    <div class="exam-levels">
+                        <span class="level-badge">A1</span>
+                        <span class="level-badge">A2</span>
+                        <span class="level-badge">B1</span>
+                        <span class="level-badge">B2</span>
+                        <span class="level-badge">C1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="culture">
+        <div class="container">
+            <h2>Explore Spanish Culture</h2>
+            <div class="culture-grid">
+                <div class="culture-card">
+                    <img src="Uploads/flamenco spanish.jpg" alt="Flamenco Dance">
+                    <h3>Flamenco</h3>
+                    <p>Experience the passion of this traditional Andalusian dance and music.</p>
+                </div>
+                <div class="culture-card">
+                    <img src="Uploads/gastronomy.jpg" alt="Spanish Paella">
+                    <h3>Gastronomy</h3>
+                    <p>Savor the flavors of Spanish cuisine, from paella to tapas.</p>
+                </div>
+                <div class="culture-card">
+                    <img src="Uploads/spanish festival.jpg" alt="La Tomatina">
+                    <h3>Festivals</h3>
+                    <p>Join the excitement of Spanish festivals like La Tomatina and San Fermín.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="word-of-the-day">
+        <div class="container">
+            <h3>Word of the Day</h3>
+            <p id="word"></p>
+            <p id="translation"></p>
+            <p id="usage"></p>
+        </div>
+    </section>
+
+    <section id="quiz">
+        <div class="container">
+            <h3>Test Your Spanish</h3>
+            <div id="question"></div>
+            <div id="options"></div>
+            <div id="result"></div>
+            <button id="next-question" style="display: none;">Next Question</button>
+        </div>
+    </section>
+
+    <section id="phrases-carousel">
+        <div class="container">
+            <h3>Useful Spanish Phrases</h3>
+            <div class="phrase-container">
+                <div class="phrase">
+                    <h4>¿Cómo estás?</h4>
+                    <p>How are you?</p>
+                </div>
+                <div class="phrase">
+                    <h4>Mucho gusto</h4>
+                    <p>Nice to meet you</p>
+                </div>
+                <div class="phrase">
+                    <h4>¿Dónde está...?</h4>
+                    <p>Where is...?</p>
+                </div>
+                <div class="phrase">
+                    <h4>¡Qué rico!</h4>
+                    <p>How delicious!</p>
+                </div>
+                >Hasta luego</h4>
+                    <p>See you later</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="start">
+        <h2>Begin Your Spanish Journey</h2>
+        <form class="contact-form" id="contact-form" name="contact-form" method="post" action="https://script.google.com/macros/s/AKfycbwSa1OGZaHFktNPelAnXWo_C9eUToCkNz_Rf8afJIDZzxr5EMEDhxmtbxcRVJrZgVQEbg/exec">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" required placeholder="John Doe" name="name">
+            </div>
+            <div class="form-group">
+                <label for="number">Number</label>
+                <input type="tel" id="number" required placeholder="Number" name="number">
+            </div>
+            <div class="form-group">
+                <label for="level">Current Spanish Level</label>
+                <select id="level" name="level">
+                    <option value="beginner">Complete Beginner</option>
+                    <option value="a1">A1 - Spanish Basic</option>
+                    <option value="a2">A2 - Spanish Elementary</option>
+                    <option value="b1">B1 - Spanish Intermediate</option>
+                    <option value="b2">B2 - Spanish Upper Intermediate</option>
+                    <option value="c1">C1 - Spanish Advanced</option>
+                    <option value="c2">C2 - Spanish Mastery</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Tell us your goals</label>
+                <textarea id="message" rows="4" placeholder="I want to learn Spanish because..." name="message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Start Learning Spanish!</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About The Expatlives</h3>
+                <p>We help expats navigate their journey abroad with comprehensive support and resources for a
+                    successful international lifestyle.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> 91+ 9607621025</li>
+                    <li><i class="fas fa-phone"></i> 91+ 8600068599</li>
+                    <li><i class="fas fa-envelope"></i> info@theexpatlives.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 245, ijmima building, mindspace, malad west, mumbai 400064.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 The Expatlives. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/components.js"></script>
+
+    <script>
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Active section highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Tabs functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Section visibility animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Word of the Day
+        const words = [
+            { word: 'Hola', translation: 'Hello', usage: '¡Hola! ¿Cómo estás?' },
+            { word: 'Gracias', translation: 'Thank you', usage: 'Muchas gracias por tu ayuda.' },
+            { word: 'Amigo', translation: 'Friend', usage: 'Él es mi mejor amigo.' },
+            { word: 'Feliz', translation: 'Happy', usage: 'Estoy muy feliz hoy.' },
+            { word: 'Amor', translation: 'Love', usage: 'El amor es un sentimiento hermoso.' }
+        ];
+
+        function setWordOfTheDay() {
+            const randomIndex = Math.floor(Math.random() * words.length);
+            const wordOfTheDay = words[randomIndex];
+
+            document.getElementById('word').textContent = wordOfTheDay.word;
+            document.getElementById('translation').textContent = wordOfTheDay.translation;
+            document.getElementById('usage').textContent = wordOfTheDay.usage;
+        }
+
+        setWordOfTheDay();
+
+        // Quiz functionality
+        const quizQuestions = [
+            {
+                question: 'How do you say "hello" in Spanish?',
+                options: ['Hola', 'Adiós', 'Gracias', 'Por favor'],
+                correctAnswer: 'Hola'
+            },
+            {
+                question: 'What is the capital of Spain?',
+                options: ['Barcelona', 'Madrid', 'Sevilla', 'Valencia'],
+                correctAnswer: 'Madrid'
+            },
+            {
+                question: 'What does "gracias" mean?',
+                options: ['Please', 'Sorry', 'Thank you', 'Goodbye'],
+                correctAnswer: 'Thank you'
+            },
+            {
+                question: 'Which of these is NOT a color in Spanish?',
+                options: ['Rojo', 'Azul', 'Verde', 'Purple'],
+                correctAnswer: 'Purple'
+            },
+            {
+                question: 'How do you say "good night" in Spanish?',
+                options: ['Buenos días', 'Buenas tardes', 'Buenas noches', 'Buen provecho'],
+                correctAnswer: 'Buenas noches'
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function displayQuestion() {
+            const questionElement = document.getElementById('question');
+            const optionsElement = document.getElementById('options');
+            const resultElement = document.getElementById('result');
+            const nextQuestionButton = document.getElementById('next-question');
+
+            const currentQuestion = quizQuestions[currentQuestionIndex];
+            questionElement.textContent = currentQuestion.question;
+
+            optionsElement.innerHTML = '';
+            currentQuestion.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.addEventListener('click', () => checkAnswer(option));
+                optionsElement.appendChild(button);
+            });
+
+            resultElement.textContent = '';
+            nextQuestionButton.style.display = 'none';
+        }
+
+        function checkAnswer(selectedAnswer) {
+            const currentQuestion = quizQuestions[currentQuestionIndex];
+            const resultElement = document.getElementById('result');
+            const nextQuestionButton = document.getElementById('next-question');
+
+            if (selectedAnswer === currentQuestion.correctAnswer) {
+                resultElement.textContent = '¡Correcto!';
+                resultElement.style.color = 'green';
+                score++;
+            } else {
+                resultElement.textContent = `Incorrect. The correct answer is: ${currentQuestion.correctAnswer}`;
+                resultElement.style.color = 'red';
+            }
+
+            document.querySelectorAll('#options button').forEach(button => {
+                button.disabled = true;
+            });
+
+            nextQuestionButton.style.display = 'inline-block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizQuestions.length) {
+                displayQuestion();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function showFinalScore() {
+            const quizElement = document.getElementById('quiz');
+            quizElement.innerHTML = `
+                <h3>Quiz Completed!</h3>
+                <p>Your score: ${score} out of ${quizQuestions.length}</p>
+                <button onclick="restartQuiz()" class="nav-button">Restart Quiz</button>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            displayQuestion();
+        }
+
+        displayQuestion();
+
+        document.getElementById('next-question').addEventListener('click', nextQuestion);
+
+        // Spanish Phrases Carousel
+        const phraseContainer = document.querySelector('.phrase-container');
+        const phrases = document.querySelectorAll('.phrase');
+        let currentPhraseIndex = 0;
+
+        function showNextPhrase() {
+            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const offset = -currentPhraseIndex * 100;
+            phraseContainer.style.transform = `translateX(${offset}%)`;
+        }
+
+        setInterval(showNextPhrase, 5000); // Change phrase every 5 seconds
+    </script>
+
+    <script src="google sheet3.js"></script>
+</body>
+</html>
